@@ -16,8 +16,4 @@ app.use(render);
 // 路由配置
 app.use(router);
 
-app.use(async ctx => {
-    ctx.body = 'Hello world!';
-})
-
 app.listen(port);
