@@ -1,0 +1,15 @@
+{
+    extends: "airbnb",
+    rules: {
+        linebreak-style: 0,
+        indent: ["error", 4],
+        comma-dangle: ["error", "only-multiline"],
+        jsx-a11y/href-no-hash: 0
+    },
+    eslintConfig: {
+        globals: {
+            window: true,
+            document: true
+        }
+    }
+}

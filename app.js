@@ -1,10 +1,11 @@
 const path = require('path');
-const koa = require('koa');
+const Koa = require('koa');
 const config = require('config');
 const tplSetting = require('./lib/tplSetting.js');
 const render = require('./lib/render.js');
 const router = require('./lib/router.js');
-const app = new koa();
+
+const app = new Koa();
 const port = config.get('port');
 
 // koa-ejs参数设置
