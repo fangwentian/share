@@ -4,7 +4,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const exec = require('child_process').exec;
 
-const PROD = process.env.NODE_ENV === 'production';   // 是否生产环境
+const PROD = process.env.NODE_ENV === 'production';
 exec('rm -rf dist');
 
 module.exports = {
