@@ -18,7 +18,7 @@ app.use(serve(path.join(__dirname, '/dist')));
 // 模板渲染
 app.use(render);
 
-// 路由配置
+// 路由配置 || 假数据
 app.use(router);
 
 app.listen(port);

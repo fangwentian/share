@@ -5,7 +5,9 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "webpack --progress --profile --colors --display-optimization-bailout"
+    "build": "webpack --progress --profile --colors --display-optimization-bailout",
+    "server": "node app.js",
+    "dev": "run-p build server"
   },
   "author": "",
   "license": "ISC",
@@ -46,6 +48,7 @@
     "json-loader": "^0.5.7",
     "less": "^2.7.2",
     "less-loader": "^4.0.5",
+    "npm-run-all": "^4.0.2",
     "raw-loader": "^0.5.1",
     "style-loader": "^0.18.2",
     "transfer-webpack-plugin": "^0.1.4"
