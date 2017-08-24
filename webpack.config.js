@@ -13,7 +13,10 @@ module.exports = {
     },
     resolve: {
         alias: {
-            vue: 'vue/dist/vue.js'
+            vue: 'vue/dist/vue.js',
+            jsComp: path.join(__dirname, 'public/src/javascript/components'),
+            jsModules: path.join(__dirname, 'public/src/javascript/modules'),
+            jsUtil: path.join(__dirname, 'public/src/javascript/util')
         },
         extensions: ['.js', '.vue', '.json'],
         modules: [path.join(__dirname, 'public'), 'node_modules']

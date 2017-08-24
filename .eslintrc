@@ -4,7 +4,8 @@
         linebreak-style: 0,
         indent: ["error", 4],
         comma-dangle: ["error", "only-multiline"],
-        jsx-a11y/href-no-hash: 0
+        jsx-a11y/href-no-hash: 0,
+        no-new: 0
     },
     eslintConfig: {
         globals: {
