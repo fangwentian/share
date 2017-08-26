@@ -2,9 +2,9 @@
     <div class="m-app">
         <TopNav :navType='navType'/>
         <div class="contentWrap">
-            <div class="leftSide">
+            <aside class="leftSide">
                 <LeftSide />
-            </div>
+            </aside>
             <div class="mainArea">
                 <router-view></router-view>
             </div>
