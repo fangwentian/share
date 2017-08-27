@@ -1,6 +1,6 @@
 <template>
     <header>
-        Kaola Fed Share1111
+        Kaola Fed Share
     </header>
 </template>
 

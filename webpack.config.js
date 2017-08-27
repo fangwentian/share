@@ -9,7 +9,13 @@ exec('rm -rf dist');
 
 module.exports = {
     entry: {
-        index: PROD ? './public/src/javascript/page/index/index/index' : ['./client.js'].concat('./public/src/javascript/page/index/index/index'),
+        index: PROD ? 
+            './public/src/javascript/page/index/index/index' : 
+            [
+                'eventsource-polyfill',
+                'webpack-hot-middleware/client?path=/__webpack_hmr&timeout=20000',
+                './public/src/javascript/page/index/index/index'
+            ],
     },
     resolve: {
         alias: {
