@@ -6,12 +6,13 @@ const serve = require('koa-static');
 const tplSetting = require('./lib/tplSetting.js');
 const render = require('./lib/render.js');
 const router = require('./lib/router.js');
-const KWM = require('koa-webpack-middleware')
-const devMiddleware = KWM.devMiddleware;
-const hotMiddleware = KWM.hotMiddleware
+const KWM = require('koa-webpack-middleware');
 
+const devMiddleware = KWM.devMiddleware;
+const hotMiddleware = KWM.hotMiddleware;
 const app = new Koa();
 const port = config.get('port');
+const publicPath = config.get('publicPath');
 
 // hot reload
 if (!PROD) {
@@ -20,7 +21,7 @@ if (!PROD) {
     const compile = webpack(webpackConfig);
     app.use(devMiddleware(compile, {
         noInfo: true,
-        publicPath: config.get('publicPath')
+        publicPath
     }));
     app.use(hotMiddleware(compile));
 }
@@ -29,7 +30,7 @@ if (!PROD) {
 tplSetting(app, __dirname);
 
 // 静态资源
-app.use(serve(path.join(__dirname, '/dist')));
+app.use(serve(path.join(__dirname, publicPath)));
 
 // 模板渲染
 app.use(render);
