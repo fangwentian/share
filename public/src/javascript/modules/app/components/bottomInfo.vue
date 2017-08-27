@@ -1,7 +1,7 @@
 <template>
-    <div>
-        this is bottom info
-    </div>
+    <footer>
+        footer
+    </footer>
 </template>
 
 <script>

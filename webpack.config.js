@@ -9,7 +9,7 @@ exec('rm -rf dist');
 
 module.exports = {
     entry: {
-        index: './public/src/javascript/page/index/index/index',
+        index: PROD ? './public/src/javascript/page/index/index/index' : ['./client.js'].concat('./public/src/javascript/page/index/index/index'),
     },
     resolve: {
         alias: {
