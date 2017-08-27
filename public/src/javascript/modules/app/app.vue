@@ -1,12 +1,14 @@
 <template>
     <div class="m-app">
-        <TopNav :navType='navType'/>
-        <div class="contentWrap">
-            <aside class="leftSide">
-                <LeftSide />
-            </aside>
-            <div class="mainArea">
-                <router-view></router-view>
+        <div class="wrap">
+            <TopNav :navType='navType'/>
+            <div class="contentWrap">
+                <aside class="leftSide">
+                    <LeftSide />
+                </aside>
+                <div class="mainArea">
+                    <router-view></router-view>
+                </div>
             </div>
         </div>
         <BottomInfo />
@@ -36,8 +38,12 @@ export default {
 .contentWrap {
     display: flex;
 }
+.wrap {
+    min-height: calc(~"100vh - 50px");
+}
 .leftSide {
-    width: 300px;
+    width: 260px;
+    padding-right: 10px;
 }
 .mainArea {
     flex: 1 0 0;

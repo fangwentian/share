@@ -16,8 +16,9 @@ header{
     color: #fff;
     height: 40px;
     line-height: 40px;
-    padding: 0 30px;
+    padding: 0 20px;
     font-weight: bold;
+    margin-bottom: 10px;
 }
 
 </style>

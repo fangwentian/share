@@ -73,7 +73,7 @@ export default {
     }
   }
   .el-col {
-    border-radius: 4px;
+/*    border-radius: 4px;*/
   }
   .bg-purple-dark {
     background: #99a9bf;
@@ -85,7 +85,7 @@ export default {
     background: #e5e9f2;
   }
   .grid-content {
-    border-radius: 4px;
+    /*border-radius: 4px;*/
     min-height: 36px;
   }
   .row-bg {
