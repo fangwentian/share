@@ -2,10 +2,9 @@ const webpack = require('webpack');
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
-const exec = require('child_process').exec;
+const CleanWebpackPlugin = require('clean-webpack-plugin');
 
 const PROD = process.env.NODE_ENV === 'production';
-exec('rm -rf dist');
 
 module.exports = {
     entry: {
@@ -62,7 +61,8 @@ module.exports = {
     ].concat(PROD ? [
         new webpack.optimize.UglifyJsPlugin({
             compress: { warnings: false }
-        })
+        }),
+        new CleanWebpackPlugin('dist')
     ] : []),
     watch: !PROD
 };
