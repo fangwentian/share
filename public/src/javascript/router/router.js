@@ -12,7 +12,7 @@ export default new Router({
             component: App,
             children: [
                 {
-                    path: '/home',
+                    path: '',
                     component: Home
                 }
             ]
