@@ -8,9 +8,9 @@
             </ul>
         </div>
         <ul class="classification">
-            <li>电子书</li>
-            <li>照片</li>
-            <li>其他文件</li>
+            <li><i class="fa fa-file-pdf-o" aria-hidden="true"></i>电子书</li>
+            <li><i class="fa fa-file-image-o" aria-hidden="true"></i>照片</li>
+            <li><i class="fa fa-file-image-o" aria-hidden="true"></i>其他文件</li>
         </ul>
     </div>
 </template>
@@ -64,6 +64,13 @@ export default {
         vertical-align: middle;
         position: relative;
         top: -1px;
+    }
+}
+.classification {
+    margin-top: 30px; 
+    li {
+        height: 30px;
+        margin-bottom: 10px;
     }
 }
 
