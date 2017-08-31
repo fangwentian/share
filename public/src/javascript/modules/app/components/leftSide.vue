@@ -10,7 +10,7 @@
         <ul class="classification">
             <li><i class="fa fa-file-pdf-o" aria-hidden="true"></i>电子书</li>
             <li><i class="fa fa-file-image-o" aria-hidden="true"></i>照片</li>
-            <li><i class="fa fa-file-image-o" aria-hidden="true"></i>其他文件</li>
+            <li><i class="fa fa-file-text-o" aria-hidden="true"></i>其他文件</li>
         </ul>
     </div>
 </template>
@@ -71,6 +71,9 @@ export default {
     li {
         height: 30px;
         margin-bottom: 10px;
+    }
+    i {
+        margin-right: 15px;
     }
 }
 

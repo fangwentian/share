@@ -41,7 +41,7 @@ export default {
 .contentWrap {
     display: flex;
     width: 1136px;
-    margin: 40px auto 0  auto;
+    margin: 35px auto 0  auto;
 }
 .wrap {
     min-height: calc(~"100vh - 50px");
