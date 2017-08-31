@@ -37,13 +37,15 @@ export default {
 <style scoped lang="less">
 .contentWrap {
     display: flex;
+    width: 1136px;
+    margin: 0 auto;
 }
 .wrap {
     min-height: calc(~"100vh - 50px");
 }
 .leftSide {
-    width: 260px;
-    padding-right: 10px;
+    width: 100px;
+    margin-right: 70px;
 }
 .mainArea {
     flex: 1 0 0;
