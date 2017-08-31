@@ -24,7 +24,7 @@ header {
     padding: 0 20px;
     font-weight: bold;
     margin-bottom: 10px;
-    box-shadow: 0 2px 3px 0 hsla(0,0%,39%,.15);
+    box-shadow: 0 2px 3px 0 rgba(50,50,50,.1);
 }
 .container {
     width: 1136px;

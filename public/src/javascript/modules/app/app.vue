@@ -35,10 +35,13 @@ export default {
 </script>
 
 <style scoped lang="less">
+.m-app {
+    background-color: #f7f7f7;
+}
 .contentWrap {
     display: flex;
     width: 1136px;
-    margin: 0 auto;
+    margin: 40px auto 0  auto;
 }
 .wrap {
     min-height: calc(~"100vh - 50px");

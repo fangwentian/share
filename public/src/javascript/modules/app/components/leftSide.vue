@@ -7,9 +7,11 @@
                 <li><i class="fa fa-folder icon" aria-hidden="true"></i>文件夹</li>
             </ul>
         </div>
-        <div>
-            
-        </div>
+        <ul class="classification">
+            <li>电子书</li>
+            <li>照片</li>
+            <li>其他文件</li>
+        </ul>
     </div>
 </template>
 <script>
@@ -27,6 +29,7 @@ export default {
 
 <style scoped lang="less">
 .new {
+    width: 80px;
     display: block;
     height: 28px;
     background-color: #41464b;
@@ -34,18 +37,23 @@ export default {
     text-align: center;
     line-height: 28px;
 }
-
 .operations {
+    display: none;
     width: 135px;
     margin-top: 5px;
     border: solid 1px #ddd;
-    padding: 13px 12px 13px 20px;
+    padding: 13px 0 13px 0;
     box-shadow: 0 4px 12px 0 rgba(0,0,0,.1);
     position: absolute;
+    background: #fff;
     li {
         height: 36px;
         line-height: 36px;
         cursor: pointer;
+        padding: 0 12px 0 20px;
+        &:hover {
+            background-color: #f5f5f5;
+        }
         i {
             margin-right: 12px;
         }
