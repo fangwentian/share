@@ -97,6 +97,7 @@ export default {
     li {
         height: 30px;
         margin-bottom: 10px;
+        cursor: pointer;
     }
     i {
         margin-right: 13px;
