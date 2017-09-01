@@ -33,12 +33,12 @@ export default Vue.extend({
     right: 0;
     top: 0;
     bottom: 0;
-    background-color: rgba(0, 0, 0, 0.4);
+    background-color: rgba(0, 0, 0, 0.5);
     animation: opacity 0.2s linear;
 }
 @keyframes opacity {
     0% {background-color: rgba(0, 0, 0, 0);}
-    100% {background-color: rgba(0, 0, 0, 0.4);}
+    100% {background-color: rgba(0, 0, 0, 0.5);}
 }
 .content {
     position: absolute;
@@ -51,7 +51,7 @@ export default Vue.extend({
     animation: position 0.2s linear;
 }
 @keyframes position {
-    0% {transform: translate(-50%, -60%);}
+    0% {transform: translate(-50%, -55%);}
     100% {transform: translate(-50%, -50%);}
 }
 </style>

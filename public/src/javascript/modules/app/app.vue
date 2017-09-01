@@ -11,7 +11,7 @@
                 </div>
             </div>
         </div>
-        <BottomInfo />
+        <!-- <BottomInfo /> -->
     </div>
 </template>
 
