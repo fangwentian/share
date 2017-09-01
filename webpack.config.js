@@ -58,12 +58,12 @@ module.exports = {
             inject: true,
             chunks: ['commons', 'index']
         }),
-        new ExtractTextPlugin(PROD ? '[name]-[contenthash].css' : '[name].css')
+        new ExtractTextPlugin(PROD ? '[name]-[contenthash].css' : '[name].css'),
+        new CleanWebpackPlugin('dist')
     ].concat(PROD ? [
         new webpack.optimize.UglifyJsPlugin({
             compress: { warnings: false }
-        }),
-        new CleanWebpackPlugin('dist')
+        })
     ] : []),
     watch: !PROD
 };
