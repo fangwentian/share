@@ -3,8 +3,8 @@
         <div class="f-pr">
             <a href="javascript:;" class="new" @click.stop="showOperations">新建</a>
             <ul class="operations" v-if="isShowOperations">
-                <li><i class="fa fa-upload" aria-hidden="true"></i>导入文件</li>
-                <li><i class="fa fa-folder" aria-hidden="true"></i>文件夹</li>
+                <li @click="addFile"><i class="fa fa-upload" aria-hidden="true"></i>导入文件</li>
+                <li @click="addFolder"><i class="fa fa-folder" aria-hidden="true"></i>文件夹</li>
             </ul>
         </div>
         <ul class="classification">
@@ -14,7 +14,6 @@
         </ul>
     </div>
 </template>
-
 <script>
 export default {
     data() {
@@ -30,60 +29,79 @@ export default {
     methods: {
         showOperations() {
             this.isShowOperations = !this.isShowOperations;
+        },
+        addFile() {
+
+        },
+        addFolder() {
+            this.$prompt('请输入文件夹名称', '提示', {
+                confirmButtonText: '确定',
+                cancelButtonText: '取消',
+                inputPattern: /^.+$/,
+                inputErrorMessage: '名称不能为空'
+            }).then(({ value }) => {
+                this.$message({
+                    type: 'success',
+                    message: `新建文件夹"${value}"成功！`
+                });
+            }).catch(() => {
+                console.log('cancled');
+            })
         }
     }
 }
 </script>
-
 <style scoped lang="less">
-    .new {
-        width: 80px;
-        display: block;
-        height: 28px;
-        background-color: #41464b;
-        color: #fff;
-        text-align: center;
-        line-height: 28px;
-    }
-    .operations {
-        width: 135px;
-        margin-top: 5px;
-        border: solid 1px #ddd;
-        padding: 13px 0 13px 0;
-        box-shadow: 0 4px 12px 0 rgba(0,0,0,.1);
-        position: absolute;
-        background: #fff;
-        z-index: 1;
-        li {
-            height: 36px;
-            line-height: 36px;
-            cursor: pointer;
-            padding: 0 12px 0 20px;
-            &:hover {
-                background-color: #f5f5f5;
-            }
-            i {
-                margin-right: 12px;
-                color: #93a2b1;
-                font-size: 16px;
-                vertical-align: middle;
-                position: relative;
-                top: -1px;
-            }
-        }
-    }
-    .classification {
-        margin-top: 30px;
-        li {
-            height: 30px;
-            margin-bottom: 10px;
+.new {
+    width: 80px;
+    display: block;
+    height: 28px;
+    background-color: #41464b;
+    color: #fff;
+    text-align: center;
+    line-height: 28px;
+}
+
+.operations {
+    width: 135px;
+    margin-top: 5px;
+    border: solid 1px #ddd;
+    padding: 13px 0 13px 0;
+    box-shadow: 0 4px 12px 0 rgba(0, 0, 0, .1);
+    position: absolute;
+    background: #fff;
+    z-index: 1;
+    li {
+        height: 36px;
+        line-height: 36px;
+        cursor: pointer;
+        padding: 0 12px 0 20px;
+        &:hover {
+            background-color: #f5f5f5;
         }
         i {
-            margin-right: 13px;
+            margin-right: 12px;
+            color: #93a2b1;
             font-size: 16px;
             vertical-align: middle;
             position: relative;
             top: -1px;
         }
     }
+}
+
+.classification {
+    margin-top: 30px;
+    li {
+        height: 30px;
+        margin-bottom: 10px;
+    }
+    i {
+        margin-right: 13px;
+        font-size: 16px;
+        vertical-align: middle;
+        position: relative;
+        top: -1px;
+    }
+}
 </style>
