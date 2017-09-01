@@ -28,7 +28,7 @@ module.exports = {
     },
     devtool: PROD ? 'cheap-source-map' : 'source-map',
     output: {
-        publicPath: '/',
+        publicPath: 'http://localhost:5000/dist',
         path: path.join(__dirname, 'dist'),
         filename: PROD ? 'javascript/[name]-[hash].js' : 'javascript/[name].js'
     },

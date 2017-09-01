@@ -15,6 +15,8 @@
     </div>
 </template>
 <script>
+import UploadModal from 'jsComp/uploadModal';
+
 export default {
     data() {
         return {
@@ -31,7 +33,7 @@ export default {
             this.isShowOperations = !this.isShowOperations;
         },
         addFile() {
-
+            new UploadModal({});
         },
         addFolder() {
             this.$prompt('请输入文件夹名称', '提示', {
