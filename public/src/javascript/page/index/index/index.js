@@ -4,7 +4,7 @@ import Vue from 'vue';
 import router from 'src/javascript/router/router';
 import ElementUI from 'element-ui';
 import 'element-ui/lib/theme-default/index.css';
-// import store from 'src/javascript/store';
+import store from 'src/javascript/store';
 
 Vue.use(ElementUI);
 
@@ -13,5 +13,5 @@ new Vue({
     el: '#_main',
     template: '<router-view></router-view>',
     router,
-    // store
+    store
 });

@@ -8,25 +8,29 @@
             </ul>
         </div>
         <ul class="classification">
-            <router-link to="/books" tag="li"><i class="fa fa-file-pdf-o" aria-hidden="true"></i>电子书</router-link>
-            <router-link to="/photos" tag="li"><i class="fa fa-file-image-o" aria-hidden="true"></i>照片</router-link>
-            <router-link to="/otherfiles" tag="li"><i class="fa fa-file-text-o" aria-hidden="true"></i>其他文件</router-link>
+            <router-link v-for="item in categories" :to="item.route" tag="li" :key="item.id"><i class="fa" :class="item.icon" aria-hidden="true"></i>{{item.name}}</router-link>
         </ul>
     </div>
 </template>
 <script>
 import UploadModal from 'jsComp/uploadModal';
-
+import { mapState } from 'vuex';
 export default {
     data() {
         return {
             isShowOperations: false
         }
     },
+    computed: {
+        ...mapState('categories', [
+            'categories'
+        ])
+    },
     created() {
         document.onclick = () => {
             this.isShowOperations = false;
         }
+        console.dir(this.$store.state)
     },
     methods: {
         showOperations() {

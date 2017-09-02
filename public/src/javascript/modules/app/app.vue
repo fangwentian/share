@@ -44,7 +44,7 @@ export default {
     margin: 35px auto 0  auto;
 }
 .wrap {
-    min-height: calc(~"100vh - 50px");
+    min-height: 100vh;
 }
 .leftSide {
     width: 100px;
