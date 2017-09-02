@@ -8,9 +8,9 @@
             </ul>
         </div>
         <ul class="classification">
-            <li><i class="fa fa-file-pdf-o" aria-hidden="true"></i>电子书</li>
-            <li><i class="fa fa-file-image-o" aria-hidden="true"></i>照片</li>
-            <li><i class="fa fa-file-text-o" aria-hidden="true"></i>其他文件</li>
+            <router-link to="/books" tag="li"><i class="fa fa-file-pdf-o" aria-hidden="true"></i>电子书</router-link>
+            <router-link to="/photos" tag="li"><i class="fa fa-file-image-o" aria-hidden="true"></i>照片</router-link>
+            <router-link to="/otherfiles" tag="li"><i class="fa fa-file-text-o" aria-hidden="true"></i>其他文件</router-link>
         </ul>
     </div>
 </template>
@@ -106,5 +106,8 @@ export default {
         position: relative;
         top: -1px;
     }
+}
+.router-link-active {
+    font-weight: bold;
 }
 </style>

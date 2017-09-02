@@ -13,6 +13,18 @@ export default new Router({
             children: [
                 {
                     path: '',
+                    redirect: '/books'
+                },
+                {
+                    path: 'books',
+                    component: Home
+                },
+                {
+                    path: 'photos',
+                    component: Home
+                },
+                {
+                    path: 'otherfiles',
                     component: Home
                 }
             ]

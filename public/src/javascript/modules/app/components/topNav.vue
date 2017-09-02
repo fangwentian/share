@@ -1,7 +1,7 @@
 <template>
     <header>
         <div class="container">
-            <a href="">考拉文档</a>
+            <router-link to="/" exact>考拉文档</router-link>
             <div class="f-fr">
                 
             </div>
