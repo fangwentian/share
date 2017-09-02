@@ -29,6 +29,9 @@ export default Vue.extend({
 <style scoped lang="less">
 .cover {
     position: fixed;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     left: 0;
     right: 0;
     top: 0;
@@ -41,17 +44,15 @@ export default Vue.extend({
     100% {background-color: rgba(0, 0, 0, 0.5);}
 }
 .content {
-    position: absolute;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%);
+    display: block;
+    transform: translateY(0);
     padding: 40px 30px;
     background-color: #fff;
     border-radius: 3px;
     animation: position 0.2s linear;
 }
 @keyframes position {
-    0% {transform: translate(-50%, -55%);}
-    100% {transform: translate(-50%, -50%);}
+    0% {transform: translateY(-30px);}
+    100% {transform: translateY(0);}
 }
 </style>

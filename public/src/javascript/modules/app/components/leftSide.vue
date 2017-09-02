@@ -98,16 +98,18 @@ export default {
         height: 30px;
         margin-bottom: 10px;
         cursor: pointer;
+        color: #6d6d6d;
     }
     i {
         margin-right: 13px;
         font-size: 16px;
         vertical-align: middle;
         position: relative;
-        top: -1px;
+        top: -2px;
     }
 }
-.router-link-active {
+.classification .router-link-active {
+    color: #000;
     font-weight: bold;
 }
 </style>
