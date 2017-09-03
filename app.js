@@ -1,4 +1,5 @@
 const PROD = process.env.NODE_ENV === 'production';   // 是否生产环境
+const MOCK = process.env.NODE_ENV === 'mock';         // 是否mock模式
 const path = require('path');
 const Koa = require('koa');
 const config = require('config');
@@ -6,18 +7,17 @@ const serve = require('koa-static');
 const tplSetting = require('./lib/tplSetting.js');
 const render = require('./lib/render.js');
 const router = require('./lib/router.js');
+const mock = require('./lib/mock.js');
 const KWM = require('koa-webpack-middleware');
 const favicon = require('koa-favicon');
 const chalk = require('chalk');
-// const connectDB = require('./lib/connectDB');
+const connectDB = MOCK ? '' : require('./lib/connectDB')();
 
 const devMiddleware = KWM.devMiddleware;
 const hotMiddleware = KWM.hotMiddleware;
 const app = new Koa();
 const port = config.get('port');
 const publicPath = config.get('publicPath');
-
-// connectDB();
 
 // hot reload
 if (!PROD) {
@@ -43,8 +43,13 @@ app.use(serve(path.join(__dirname, publicPath)));
 // 模板渲染
 app.use(render);
 
-// 路由配置 || 假数据
-app.use(router);
+if(MOCK) {
+    // 假数据
+    app.use(mock)
+} else {
+    // 路由
+    app.use(router);
+}
 
 app.listen(port);
 
