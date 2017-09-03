@@ -52,9 +52,12 @@ export default {
                 inputErrorMessage: '名称不能为空'
             }).then(({ value }) => {
                 axios.post('/addFolder', {
-                    folderName: value,
+                    name: value,
+                    type: 'folder',
                     categoty: 1,
-                    parentId: 1
+                    children: [],
+                    isFirstLevel: true
+                    
                 }).then((res) => {
                     console.log(res);
                     if(res.data.code == 200) {

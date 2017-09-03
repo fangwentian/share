@@ -11,7 +11,8 @@ const mock = require('./lib/mock.js');
 const KWM = require('koa-webpack-middleware');
 const favicon = require('koa-favicon');
 const chalk = require('chalk');
-// const connectDB = MOCK ? '' : require('./lib/connectDB')();
+const bodyParser = require('koa-bodyparser');
+const connectDB = MOCK ? '' : require('./lib/connectDB')();
 
 const devMiddleware = KWM.devMiddleware;
 const hotMiddleware = KWM.hotMiddleware;
@@ -40,6 +41,9 @@ app.use(favicon(path.join(__dirname, 'favicon.ico')));
 // 静态资源
 app.use(serve(path.join(__dirname, publicPath)));
 
+// 请求体解析
+app.use(bodyParser());
+
 // 模板渲染
 app.use(render);
 
@@ -53,7 +57,8 @@ if(MOCK) {
 
 app.listen(port);
 
-app.on('error', (err, ctx) =>
-    console.error('server error:', err);
+app.on('error', (err, ctx) => {
+        console.error('server error:', err);
+    }
 );
 

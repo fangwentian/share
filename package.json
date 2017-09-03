@@ -30,6 +30,7 @@
     "font-awesome": "^4.7.0",
     "font-awesome-webpack": "^0.0.5-beta.2",
     "koa": "^2.3.0",
+    "koa-bodyparser": "^4.2.0",
     "koa-ejs": "^4.1.0",
     "koa-static": "^4.0.1",
     "mongoose": "^4.11.8",
