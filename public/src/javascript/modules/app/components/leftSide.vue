@@ -15,6 +15,8 @@
 <script>
 import UploadModal from 'jsComp/uploadModal';
 import { mapState } from 'vuex';
+import axios from 'axios';
+
 export default {
     data() {
         return {
@@ -49,10 +51,19 @@ export default {
                 inputPattern: /^.+$/,
                 inputErrorMessage: '名称不能为空'
             }).then(({ value }) => {
-                this.$message({
-                    type: 'success',
-                    message: `新建文件夹"${value}"成功！`
-                });
+                axios.post('/addFolder', {
+                    folderName: value,
+                    categoty: 1,
+                    parentId: 1
+                }).then((res) => {
+                    console.log(res);
+                    if(res.data.code == 200) {
+                        this.$message({
+                            type: 'success',
+                            message: `新建文件夹"${value}"成功！`
+                        });
+                    }
+                })
             }).catch(() => {
                 console.log('cancled');
             })

@@ -11,7 +11,7 @@ const mock = require('./lib/mock.js');
 const KWM = require('koa-webpack-middleware');
 const favicon = require('koa-favicon');
 const chalk = require('chalk');
-const connectDB = MOCK ? '' : require('./lib/connectDB')();
+// const connectDB = MOCK ? '' : require('./lib/connectDB')();
 
 const devMiddleware = KWM.devMiddleware;
 const hotMiddleware = KWM.hotMiddleware;
@@ -48,7 +48,7 @@ if(MOCK) {
     app.use(mock)
 } else {
     // 路由
-    app.use(router);
+    app.use(router.routes());
 }
 
 app.listen(port);
