@@ -54,7 +54,7 @@ export default {
                 axios.post('/addFolder', {
                     name: value,
                     type: 'folder',
-                    categoty: 1,
+                    category: 1,
                     children: [],
                     isFirstLevel: true
                     
