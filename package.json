@@ -7,7 +7,8 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "webpack --progress --profile --colors",
     "server": "node app.js",
-    "dev": "run-p build server"
+    "dev": "cross-env NODE_ENV=development run-p build server",
+    "mock": "cross-env NODE_ENV=mock run-p build server"
   },
   "author": "",
   "license": "ISC",
@@ -58,10 +59,13 @@
     "koa-webpack-middleware": "^1.0.7",
     "less": "^2.7.2",
     "less-loader": "^4.0.5",
+    "nos-node-sdk": "^0.0.2",
     "npm-run-all": "^4.0.2",
     "raw-loader": "^0.5.1",
+    "streamifier": "^0.1.1",
     "style-loader": "^0.18.2",
     "transfer-webpack-plugin": "^0.1.4",
+    "uuid": "^3.1.0",
     "webpack-dev-middleware": "^1.12.0"
   }
 }

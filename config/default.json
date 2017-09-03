@@ -2,5 +2,9 @@
     "port": 5000,
     "templateRoot": "dist/template",
     "mockDir": "mocks",
-    "publicPath": "/dist"
+    "publicPath": "/dist",
+    "BUCKET": "",
+    "END_POINT": "",
+    "ACCESS_KEY": "",
+    "SECRET_KEY": ""
 }

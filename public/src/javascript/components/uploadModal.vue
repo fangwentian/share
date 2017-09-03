@@ -2,10 +2,10 @@
     <div class="cover" @click="close">
         <div class="content" @click.stop>
             <div>
-                <el-upload class="upload-demo" drag action="https://jsonplaceholder.typicode.com/posts/" multiple>
+                <el-upload class="upload-demo" drag action="/upload" multiple :file-list="fileList" :accept="accept" :before-upload="check">
                     <i class="el-icon-upload"></i>
                     <div class="el-upload__text">将文件拖到此处，或<em>点击上传</em></div>
-                    <div class="el-upload__tip" slot="tip">只能上传jpg/png文件，且不超过500kb</div>
+                    <div class="el-upload__tip" slot="tip">只能上传 {{accept}} 类型文件</div>
                 </el-upload>
             </div>
         </div>
@@ -14,6 +14,16 @@
 <script>
 import Vue from 'vue';
 export default Vue.extend({
+    props: {
+        accept: {
+            default: ''
+        }
+    },
+    data() {
+        return {
+            fileList: []
+        }
+    },
     created() {
         this.$mount();
         document.body.appendChild(this.$el);
@@ -22,6 +32,18 @@ export default Vue.extend({
         close() {
             this.$destroy();
             document.body.removeChild(this.$el);
+        },
+        check(file) {
+            let fileType = file.type;
+            let regx = new RegExp(this.accept);
+            if(!regx.test(fileType)) {
+                this.$message({
+                    message: '文件类型错误',
+                    type: 'warning'
+                });
+                return false;
+            }
+            return true;
         }
     }
 })

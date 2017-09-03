@@ -30,14 +30,17 @@ export default {
         document.onclick = () => {
             this.isShowOperations = false;
         }
-        console.dir(this.$store.state)
     },
     methods: {
         showOperations() {
             this.isShowOperations = !this.isShowOperations;
         },
         addFile() {
-            new UploadModal({});
+            new UploadModal({
+                propsData: {
+                    accept: 'image/*'
+                }
+            });
         },
         addFolder() {
             this.$prompt('请输入文件夹名称', '提示', {
