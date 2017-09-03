@@ -58,7 +58,6 @@ if(MOCK) {
 app.listen(port);
 
 app.on('error', (err, ctx) => {
-        console.error('server error:', err);
-    }
-);
+    console.error('server error:', err);
+});
 
