@@ -44,9 +44,17 @@ export default {
             this.isShowOperations = !this.isShowOperations;
         },
         addFile() {
+            let accept;
+            if (this.currentCate.id === 1) {
+                accept = 'image/*';
+            } else if (this.currentCate.id === 2) {
+                accept = 'image/*';
+            } else {
+                accept = '.*';
+            }
             new UploadModal({
                 propsData: {
-                    accept: 'image/*'
+                    accept
                 }
             });
         },
