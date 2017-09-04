@@ -9,7 +9,7 @@ const mutations = {
     [types.ADD_FOLDER] (state, folder) {
         state.files.push(folder);
     },
-    [types.GET_FILES_BY_TYPE] (state, list) {
+    [types.GET_FILE_LIST] (state, list) {
         state.files = list;
     }
 }
@@ -29,10 +29,10 @@ const actions = {
             }
         })
     },
-    getFilesByType({commit, state}, category) {
-        axios.post('/getFilesByType', {category}).then((res) => {
+    getFileList({commit, state}, category) {
+        axios.post('/getFileList', {category}).then((res) => {
             if(res.data.code == 200) {
-                commit(types.GET_FILES_BY_TYPE, res.data.result.list);
+                commit(types.GET_FILE_LIST, res.data.result.list);
             }
         })
     }

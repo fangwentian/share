@@ -28,7 +28,7 @@ export default {
 
     },
     created() {
-        this.$store.dispatch('files/getFilesByType', 1);
+        this.$store.dispatch('files/getFileList', 0);
     }
 }
 </script>
