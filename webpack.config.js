@@ -8,8 +8,8 @@ const PROD = process.env.NODE_ENV === 'production';
 
 module.exports = {
     entry: {
-        index: PROD ? 
-            './public/src/javascript/page/index/index/index' : 
+        index: PROD ?
+            './public/src/javascript/page/index/index/index' :
             [
                 'eventsource-polyfill',
                 'webpack-hot-middleware/client?path=/__webpack_hmr&timeout=20000',

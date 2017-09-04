@@ -22,6 +22,13 @@ const actions = {
             }
         })
     },
+    addFile({commit, state}, file) {
+        axios.post('/addFile', file).then((res) => {
+            if(res.data.code == 200) {
+                commit(types.ADD_FOLDER, folder)
+            }
+        })
+    },
     getFilesByType({commit, state}, category) {
         axios.post('/getFilesByType', {category}).then((res) => {
             if(res.data.code == 200) {

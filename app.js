@@ -47,9 +47,9 @@ app.use(bodyParser());
 // 模板渲染
 app.use(render);
 
-if(MOCK) {
+if (MOCK) {
     // 假数据
-    app.use(mock)
+    app.use(mock);
 } else {
     // 路由
     app.use(router.routes());
@@ -57,7 +57,7 @@ if(MOCK) {
 
 app.listen(port);
 
-app.on('error', (err, ctx) => {
+app.on('error', (err) => {
     console.error('server error:', err);
 });
 

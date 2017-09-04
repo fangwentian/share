@@ -20,24 +20,24 @@ export default {
     data() {
         return {
             isShowOperations: false
-        }
+        };
     },
     computed: {
         ...mapState('categories', [
             'categories'
         ]),
         currentCate() {
-            let path = this.$route.fullPath;
-            let categories = this.$store.state.categories.categories;
+            const path = this.$route.fullPath;
+            const categories = this.$store.state.categories.categories;
             return categories.filter((item) => {
-                return ~path.indexOf(item.route)
-            })[0]
+                return ~path.indexOf(item.route);
+            })[0];
         }
     },
     created() {
         document.onclick = () => {
             this.isShowOperations = false;
-        }
+        };
     },
     methods: {
         showOperations() {
@@ -51,14 +51,13 @@ export default {
             });
         },
         addFolder() {
-            let self = this;
+            const self = this;
             this.$prompt('请输入文件夹名称', '提示', {
                 confirmButtonText: '确定',
                 cancelButtonText: '取消',
                 inputPattern: /^.+$/,
                 inputErrorMessage: '名称不能为空'
             }).then(({ value }) => {
-
                 self.$store.dispatch('files/addFolder',
                     {
                         name: value,
@@ -74,14 +73,13 @@ export default {
                     });
                 }).catch(() => {
 
-                })
-                
+                });
             }).catch(() => {
                 console.log('cancled');
-            })
+            });
         }
     }
-}
+};
 </script>
 <style scoped lang="less">
 .new {

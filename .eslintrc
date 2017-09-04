@@ -4,13 +4,16 @@
         linebreak-style: 0,
         indent: ["error", 4],
         comma-dangle: ["error", "only-multiline"],
+        no-new: 0,
         jsx-a11y/href-no-hash: 0,
-        no-new: 0
+        import/no-extraneous-dependencies: 0,
+        import/extensions: 0,
+        import/no-unresolved: 0,
+        no-bitwise: 0,
+        global-require: 0
     },
-    eslintConfig: {
-        globals: {
-            window: true,
-            document: true
-        }
+    globals: {
+        window: true,
+        document: true
     }
 }
