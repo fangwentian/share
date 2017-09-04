@@ -27,8 +27,8 @@ export default {
     methods: {
 
     },
-    mounted() {
-
+    created() {
+        this.$store.dispatch('files/getFilesByType', 1);
     }
 }
 </script>

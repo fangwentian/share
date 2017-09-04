@@ -1,0 +1,4 @@
+export const ADD_FOLDER = 'ADD_FOLDER'
+export const ADD_FILE = 'ADD_FILE'
+export const GET_FILES_BY_TYPE = 'GET_FILES_BY_TYPE'
+export const GET_FILES_BY_PARENT = 'GET_FILES_BY_PARENT'
