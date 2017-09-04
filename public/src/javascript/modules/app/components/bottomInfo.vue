@@ -11,7 +11,7 @@
 <script>
 export default {
     name: 'BottomInfo',
-}
+};
 </script>
 <style scoped lang="less">
 footer {

@@ -12,7 +12,7 @@
 <script>
 export default {
     name: 'topNav',
-}
+};
 </script>
 
 <style lang="less" scoped>

@@ -13,6 +13,7 @@
 </template>
 <script>
 import Vue from 'vue';
+
 export default Vue.extend({
     props: {
         accept: {
@@ -22,7 +23,7 @@ export default Vue.extend({
     data() {
         return {
             fileList: []
-        }
+        };
     },
     created() {
         this.$mount();
@@ -36,7 +37,7 @@ export default Vue.extend({
         check(file) {
             let fileType = file.type;
             let regx = new RegExp(this.accept);
-            if(!regx.test(fileType)) {
+            if (!regx.test(fileType)) {
                 this.$message({
                     message: '文件类型错误',
                     type: 'warning'
@@ -46,7 +47,7 @@ export default Vue.extend({
             return true;
         }
     }
-})
+});
 </script>
 <style scoped lang="less">
 .cover {

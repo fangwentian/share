@@ -19,6 +19,7 @@
 import TopNav from './components/topNav';
 import LeftSide from './components/leftSide';
 import BottomInfo from './components/bottomInfo';
+
 export default {
     name: 'app',
     components: {
@@ -29,9 +30,9 @@ export default {
     data() {
         return {
             navType: 'home'
-        }
+        };
     }
-}
+};
 </script>
 
 <style scoped lang="less">
