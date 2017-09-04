@@ -26,7 +26,14 @@ export default {
     computed: {
         ...mapState('categories', [
             'categories'
-        ])
+        ]),
+        currentCate() {
+            let path = this.$route.fullPath;
+            let categories = this.$store.state.categories.categories;
+            return categories.filter((item) => {
+                return ~path.indexOf(item.route)
+            })[0]
+        }
     },
     created() {
         document.onclick = () => {
@@ -45,6 +52,7 @@ export default {
             });
         },
         addFolder() {
+            let self = this;
             this.$prompt('请输入文件夹名称', '提示', {
                 confirmButtonText: '确定',
                 cancelButtonText: '取消',
@@ -54,10 +62,9 @@ export default {
                 axios.post('/addFolder', {
                     name: value,
                     type: 'folder',
-                    category: 1,
+                    category: self.currentCate.id,
                     children: [],
                     isFirstLevel: true
-                    
                 }).then((res) => {
                     console.log(res);
                     if(res.data.code == 200) {

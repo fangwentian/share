@@ -3,6 +3,8 @@ let state = {
         {
             name: 'Nodejs',
             type: 'folder',
+            category: 1,
+            isFirstLevel: true,
             children: [
 
             ]
@@ -10,6 +12,64 @@ let state = {
         {
             name: 'javascript高级程序设计',
             type: 'file',
+            category: 1,
+            isFirstLevel: true,
+            fileExtension: 'pdf'
+        },
+        {
+            name: 'javascript高级程序设计',
+            type: 'file',
+            category: 1,
+            isFirstLevel: true,
+            fileExtension: 'pdf'
+        },
+        {
+            name: 'javascript权威指南',
+            type: 'file',
+            category: 1,
+            isFirstLevel: true,
+            fileExtension: 'pdf'
+        },
+        {
+            name: 'javascript权威指南',
+            type: 'file',
+            category: 1,
+            isFirstLevel: true,
+            fileExtension: 'pdf'
+        },
+        {
+            name: 'javascript权威指南',
+            type: 'file',
+            category: 1,
+            isFirstLevel: true,
+            fileExtension: 'pdf'
+        },
+        {
+            name: 'javascript权威指南',
+            type: 'file',
+            category: 1,
+            isFirstLevel: true,
+            fileExtension: 'pdf'
+        },
+        {
+            name: 'javascript权威指南',
+            type: 'file',
+            category: 1,
+            isFirstLevel: true,
+            fileExtension: 'pdf'
+        },
+        {
+            name: 'javascript权威指南',
+            type: 'file',
+            category: 1,
+            isFirstLevel: true,
+            fileExtension: 'pdf'
+        },
+        {
+            name: 'javascript权威指南',
+            type: 'file',
+            category: 1,
+            isFirstLevel: true,
             fileExtension: 'pdf'
         }
     ]

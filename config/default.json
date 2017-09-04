@@ -3,6 +3,7 @@
     "templateRoot": "dist/template",
     "mockDir": "mocks",
     "publicPath": "/dist",
+    "db": "mongodb://localhost/test",
     "BUCKET": "",
     "END_POINT": "",
     "ACCESS_KEY": "",

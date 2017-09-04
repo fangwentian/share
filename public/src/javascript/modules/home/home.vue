@@ -1,96 +1,66 @@
 <template>
-    <div>
-        <el-row>
-            <el-col :span="24">
-                <div class="grid-content bg-purple-dark"></div>
-            </el-col>
-        </el-row>
-        <el-row>
-            <el-col :span="12">
-                <div class="grid-content bg-purple"></div>
-            </el-col>
-            <el-col :span="12">
-                <div class="grid-content bg-purple-light"></div>
-            </el-col>
-        </el-row>
-        <el-row>
-            <el-col :span="8">
-                <div class="grid-content bg-purple"></div>
-            </el-col>
-            <el-col :span="8">
-                <div class="grid-content bg-purple-light"></div>
-            </el-col>
-            <el-col :span="8">
-                <div class="grid-content bg-purple"></div>
-            </el-col>
-        </el-row>
-        <el-row>
-            <el-col :span="6">
-                <div class="grid-content bg-purple"></div>
-            </el-col>
-            <el-col :span="6">
-                <div class="grid-content bg-purple-light"></div>
-            </el-col>
-            <el-col :span="6">
-                <div class="grid-content bg-purple"></div>
-            </el-col>
-            <el-col :span="6">
-                <div class="grid-content bg-purple-light"></div>
-            </el-col>
-        </el-row>
-        <el-row>
-            <el-col :span="4">
-                <div class="grid-content bg-purple"></div>
-            </el-col>
-            <el-col :span="4">
-                <div class="grid-content bg-purple-light"></div>
-            </el-col>
-            <el-col :span="4">
-                <div class="grid-content bg-purple"></div>
-            </el-col>
-            <el-col :span="4">
-                <div class="grid-content bg-purple-light"></div>
-            </el-col>
-            <el-col :span="4">
-                <div class="grid-content bg-purple"></div>
-            </el-col>
-            <el-col :span="4">
-                <div class="grid-content bg-purple-light"></div>
-            </el-col>
-        </el-row>
+    <div class="m-home">
+        <ul class="list">
+            <li v-for="file in files">
+                <div v-if="file.type === 'folder'" class="item">
+                    <div class="img folderImage"></div>
+                    <p class="f-tac f-toe">{{file.name}}</p>
+                </div>
+                <div v-if="file.type === 'file'" class="item">
+                    <div class="img fileImage"></div>
+                    <p class="f-tac f-toe">{{file.name}}</p>
+                </div>
+            </li>
+        </ul>
     </div>
 </template>
+
 <script>
+import { mapState } from 'vuex';
 export default {
     name: 'home',
-}
-</script>
-<style scoped lang='less'>
-.el-row {
-    margin-bottom: 20px;
-    &:last-child {
-        margin-bottom: 0;
+    computed: {
+        ...mapState('files', [
+            'files'
+        ]),
+    },
+    methods: {
+
+    },
+    mounted() {
+
     }
 }
+</script>
 
-.bg-purple-dark {
-    background: #99a9bf;
+<style scoped lang='less'>
+.list {
+    display: flex;
+    flex-wrap: wrap;
 }
-
-.bg-purple {
-    background: #d3dce6;
+.item {
+    width: 122px;
+    height: 127px;
+    flex: 1 0 0;
+    margin-right: 10px;
+    border: 1px solid transparent;
+    cursor: pointer;
+    color: #333;
+    &:hover {
+        border: 1px solid #e5e5e5;
+        border-radius: 2px;
+        background: #f3f4f5;
+    }
 }
-
-.bg-purple-light {
-    background: #e5e9f2;
+.img {
+    width: 80px;
+    height: 80px;
+    margin: 6px 21px 0 21px;
 }
-
-.grid-content {
-    min-height: 36px;
+.fileImage {
+    background: url(~root/res/images/file.png) no-repeat;
 }
-
-.row-bg {
-    padding: 10px 0;
-    background-color: #f9fafc;
+.folderImage {
+    background: url(~root/res/images/folder.png) no-repeat;
 }
 </style>
