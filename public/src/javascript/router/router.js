@@ -41,6 +41,8 @@ router.beforeEach((to, from, next) => {
     let folderId = to.query.folderId || '';
     store.dispatch('categories/setCurrentFolder', { folderId });
     
+    // 获取当前的filelist
+    store.dispatch('files/getFileList', store.state.categories.currentFolder);
     next();
 });
 

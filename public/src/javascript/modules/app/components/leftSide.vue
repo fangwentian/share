@@ -25,7 +25,8 @@ export default {
     computed: {
         ...mapState('categories', [
             'categories',
-            'currentCategory'
+            'currentCategory',
+            'currentFolder'
         ])
     },
     created() {
@@ -64,7 +65,7 @@ export default {
                     {
                         name: value,
                         type: 'folder',
-                        parent: self.currentCategory.id,
+                        parent: self.currentFolder,
                         children: [],
                     }
                 ).then(() => {
