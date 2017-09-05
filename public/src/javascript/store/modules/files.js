@@ -29,8 +29,8 @@ const actions = {
             }
         });
     },
-    getFileList({ commit, state }, category) {
-        axios.post('/getFileList', { category }).then((res) => {
+    getFileList({ commit, state }, folderId) {
+        axios.post('/getFileList', { folderId }).then((res) => {
             if (res.data.code === 200) {
                 commit(types.GET_FILE_LIST, res.data.result.list);
             }

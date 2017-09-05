@@ -2,14 +2,14 @@
     <div class="m-home">
         <ul class="list">
             <li v-for="file in files">
-                <div v-if="file.type === 'folder'" class="item">
+                <a v-if="file.type === 'folder'" class="item" :href="calcLink(file._id)">
                     <div class="img folderImage"></div>
                     <p class="f-tac f-toe">{{file.name}}</p>
-                </div>
-                <div v-if="file.type === 'file'" class="item">
+                </a>
+                <a v-if="file.type === 'file'" class="item">
                     <div class="img fileImage"></div>
                     <p class="f-tac f-toe">{{file.name}}</p>
-                </div>
+                </a>
             </li>
         </ul>
     </div>
@@ -24,12 +24,19 @@ export default {
         ...mapState('files', [
             'files'
         ]),
+        ...mapState('categories', [
+            'currentCategory',
+            'currentFolder'
+        ]),
     },
     methods: {
-
+        calcLink(folderId) {
+            let withoutQuery = location.href.split('?')[0];
+            return `${withoutQuery}?folderId=${folderId}`;
+        }
     },
     created() {
-        this.$store.dispatch('files/getFileList', 0);
+        this.$store.dispatch('files/getFileList', this.currentFolder);
     }
 };
 </script>
@@ -40,6 +47,7 @@ export default {
     flex-wrap: wrap;
 }
 .item {
+    display: block;
     width: 122px;
     height: 127px;
     flex: 1 0 0;

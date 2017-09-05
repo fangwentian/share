@@ -24,15 +24,9 @@ export default {
     },
     computed: {
         ...mapState('categories', [
-            'categories'
-        ]),
-        currentCate() {
-            const path = this.$route.fullPath;
-            const categories = this.$store.state.categories.categories;
-            return categories.filter((item) => {
-                return ~path.indexOf(item.route);
-            })[0];
-        }
+            'categories',
+            'currentCategory'
+        ])
     },
     created() {
         document.onclick = () => {
@@ -45,9 +39,9 @@ export default {
         },
         addFile() {
             let accept;
-            if (this.currentCate.id === 1) {
+            if (this.currentCategory.id === 1) {
                 accept = 'image/*';
-            } else if (this.currentCate.id === 2) {
+            } else if (this.currentCategory.id === 2) {
                 accept = 'image/*';
             } else {
                 accept = '.*';
@@ -70,7 +64,7 @@ export default {
                     {
                         name: value,
                         type: 'folder',
-                        parent: self.currentCate.id,
+                        parent: self.currentCategory.id,
                         children: [],
                     }
                 ).then(() => {

@@ -1,12 +1,12 @@
 const FileModel = require('../models/files');
 
 const fileController = {
-    async addFile(file) {
+    addFile(file) {
         let instance = new FileModel(file);
-        await instance.save();
+        return instance.save();
     },
-    async getFileList(folderId) {
-        const list = await FileModel.getFileList(folderId);
+    getFileList(folderId) {
+        const list = FileModel.getFileListByFolderId(folderId);
         return list;
     }
 };
