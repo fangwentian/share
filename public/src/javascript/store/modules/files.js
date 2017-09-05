@@ -18,7 +18,7 @@ const actions = {
     addFolder({ commit, state }, folder) {
         axios.post('/addFolder', folder).then((res) => {
             if (res.data.code === 200) {
-                commit(types.ADD_FOLDER, res.data.result.folder);
+                commit(types.ADD_FOLDER, res.data.result.file);
             }
         });
     },

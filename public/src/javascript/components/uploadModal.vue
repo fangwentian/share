@@ -60,7 +60,7 @@ export default Vue.extend({
     top: 0;
     bottom: 0;
     background-color: rgba(0, 0, 0, 0.5);
-    animation: opacity 0.2s linear;
+    animation: opacity .2s linear;
 }
 @keyframes opacity {
     0% {background-color: rgba(0, 0, 0, 0);}
@@ -68,14 +68,14 @@ export default Vue.extend({
 }
 .content {
     display: block;
-    transform: translateY(0);
+    transform: translate3d(0, 0, 0);
     padding: 40px 30px;
     background-color: #fff;
     border-radius: 3px;
-    animation: position 0.2s linear;
+    animation: position .2s linear;
 }
 @keyframes position {
-    0% {transform: translateY(-30px);}
-    100% {transform: translateY(0);}
+    0% {transform: translate3d(0, -30px, 0);}
+    100% {transform: translate3d(0, 0, 0);}
 }
 </style>

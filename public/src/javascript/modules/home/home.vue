@@ -1,5 +1,6 @@
 <template>
     <div class="m-home">
+        <breadcrumb />
         <ul class="list">
             <li v-for="file in files">
                 <a v-if="file.type === 'folder'" class="item" :href="calcLink(file._id)">
@@ -16,10 +17,14 @@
 </template>
 
 <script>
+import breadcrumb from './components/breadcrumb';
 import { mapState } from 'vuex';
 
 export default {
     name: 'home',
+    components: {
+        breadcrumb
+    },
     computed: {
         ...mapState('files', [
             'files'
@@ -54,7 +59,7 @@ export default {
     margin-right: 10px;
     border: 1px solid transparent;
     cursor: pointer;
-    color: #333;
+    color: #555;
     &:hover {
         border: 1px solid #e5e5e5;
         border-radius: 2px;

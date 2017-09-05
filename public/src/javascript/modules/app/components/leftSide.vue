@@ -70,7 +70,6 @@ export default {
                     }
                 ).then(() => {
                     this.$message({
-                        type: 'success',
                         message: `新建文件夹"${value}"成功！`
                     });
                 }).catch(() => {
@@ -93,6 +92,10 @@ export default {
     text-align: center;
     line-height: 28px;
 }
+@keyframes position {
+    0% {transform: translate3d(0, -5px, 0);}
+    100% {transform: translateY(0, 0, 0);}
+}
 
 .operations {
     width: 135px;
@@ -103,6 +106,7 @@ export default {
     position: absolute;
     background: #fff;
     z-index: 1;
+    animation: position .2s linear;
     li {
         height: 36px;
         line-height: 36px;
