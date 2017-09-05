@@ -1,4 +1,15 @@
 {
     "code": 200,
-    "message": "success"
+    "message": "success",
+    "result": {
+        "folder": {
+            "id": "234234234234",
+            "name": "css权威指南",
+            "type": "folder",
+            "parent": 1,
+            "children": [
+                
+            ]
+        }
+    }
 }

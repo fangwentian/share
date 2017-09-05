@@ -6,8 +6,9 @@ const fileController = {
         await instance.save();
     },
     async getFileList(folderId) {
-        return await FileModel.getFileList(folderId);
+        const list = await FileModel.getFileList(folderId);
+        return list;
     }
-}
+};
 
 module.exports = fileController;

@@ -70,9 +70,8 @@ export default {
                     {
                         name: value,
                         type: 'folder',
-                        category: self.currentCate.id,
+                        parent: self.currentCate.id,
                         children: [],
-                        isFirstLevel: true
                     }
                 ).then(() => {
                     this.$message({

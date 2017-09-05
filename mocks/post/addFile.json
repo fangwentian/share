@@ -1,4 +1,15 @@
 {
     "code": 200,
-    "message": "success"
+    "message": "success",
+    "result": {
+        "file": {
+            "id": "234234234234",
+            "name": "Nodejs",
+            "type": "folder",
+            "parent": 1,
+            "children": [
+
+            ]
+        }
+    }
 }

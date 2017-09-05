@@ -17,6 +17,7 @@
 
 <script>
 import { mapState } from 'vuex';
+
 export default {
     name: 'home',
     computed: {
@@ -30,7 +31,7 @@ export default {
     created() {
         this.$store.dispatch('files/getFileList', 0);
     }
-}
+};
 </script>
 
 <style scoped lang='less'>
