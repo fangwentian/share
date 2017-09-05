@@ -1,5 +1,5 @@
-import * as types from '../mutation-types';
 import axios from 'axios';
+import * as types from '../mutation-types';
 
 const state = {
     categories: [
@@ -29,6 +29,9 @@ const state = {
 const mutations = {
     [types.SET_CURRENT_CATEGORY](state, newCurrentCategory) {
         state.currentCategory = newCurrentCategory;
+    },
+    [types.SET_CURRENT_FOLDER](state, folderId) {
+        state.currentFolder = folderId;
     }
 };
 
@@ -41,7 +44,7 @@ const actions = {
         commit(types.SET_CURRENT_CATEGORY, res);
     },
     setCurrentFolder({ commit, state }, payload) {
-        
+        commit(types.SET_CURRENT_FOLDER, payload.folderId || state.currentCategory.id);
     }
 };
 

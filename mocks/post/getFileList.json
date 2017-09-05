@@ -1,0 +1,69 @@
+{
+    "code": 200,
+    "result": {
+        "list": [
+            {
+                "name": "Nodejs",
+                "type": "folder",
+                "parent": 1,
+                "children": [
+
+                ]
+            },
+            {
+                "name": "javascript高级程序设计",
+                "type": "file",
+                "parent": 1,
+                "fileExtension": "pdf"
+            },
+            {
+                "name": "javascript高级程序设计",
+                "type": "file",
+                "parent": 1,
+                "fileExtension": "pdf"
+            },
+            {
+                "name": "javascript权威指南",
+                "type": "file",
+                "parent": 1,
+                "fileExtension": "pdf"
+            },
+            {
+                "name": "javascript权威指南",
+                "type": "file",
+                "parent": 1,
+                "fileExtension": "pdf"
+            },
+            {
+                "name": "javascript权威指南",
+                "type": "file",
+                "parent": 1,
+                "fileExtension": "pdf"
+            },
+            {
+                "name": "javascript权威指南",
+                "type": "file",
+                "parent": 1,
+                "fileExtension": "pdf"
+            },
+            {
+                "name": "javascript权威指南",
+                "type": "file",
+                "parent": 1,
+                "fileExtension": "pdf"
+            },
+            {
+                "name": "javascript权威指南",
+                "type": "file",
+                "parent": 1,
+                "fileExtension": "pdf"
+            },
+            {
+                "name": "javascript权威指南",
+                "type": "file",
+                "parent": 1,
+                "fileExtension": "pdf"
+            }
+        ]
+    }
+}

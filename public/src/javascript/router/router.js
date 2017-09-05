@@ -34,7 +34,13 @@ const router = new Router({
 });
 
 router.beforeEach((to, from, next) => {
+    // 设置当前的分类，电子书/照片/其他文件
     store.dispatch('categories/setCurrentCategory', { fullPath: to.fullPath });
+
+    // 设置当前的folderId
+    let folderId = to.query.folderId || '';
+    store.dispatch('categories/setCurrentFolder', { folderId });
+    
     next();
 });
 
