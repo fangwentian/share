@@ -39,6 +39,7 @@ export default {
             this.isShowOperations = !this.isShowOperations;
         },
         addFile() {
+            let self = this;
             let accept;
             if (this.currentCategory.id === 1) {
                 accept = '.pdf';
@@ -49,7 +50,8 @@ export default {
             }
             new UploadModal({
                 propsData: {
-                    accept
+                    accept,
+                    store: self.$store
                 }
             });
         },

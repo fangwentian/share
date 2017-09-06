@@ -9,6 +9,9 @@ const mutations = {
     [types.ADD_FOLDER](state, folder) {
         state.files.push(folder);
     },
+    [types.ADD_FILE](state, fileList) {
+        state.files = state.files.concat(fileList);
+    },
     [types.GET_FILE_LIST](state, list) {
         state.files = list;
     }
@@ -18,14 +21,14 @@ const actions = {
     addFolder({ commit, state }, folder) {
         axios.post('/addFolder', folder).then((res) => {
             if (res.data.code === 200) {
-                commit(types.ADD_FOLDER, res.data.result.file);
+                commit(types.ADD_FOLDER, res.data.result.folder);
             }
         });
     },
-    addFile({ commit, state }, file) {
-        axios.post('/addFile', file).then((res) => {
+    addFile({ commit, state }, fileList) {
+        axios.post('/addFile', fileList).then((res) => {
             if (res.data.code === 200) {
-                commit(types.ADD_FOLDER, file);
+                commit(types.ADD_FILE, res.data.result.fileList);
             }
         });
     },
