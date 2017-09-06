@@ -11,7 +11,8 @@ const mock = require('./lib/mock.js');
 const KWM = require('koa-webpack-middleware');
 const favicon = require('koa-favicon');
 const chalk = require('chalk');
-const bodyParser = require('koa-bodyparser');
+const koaBody = require('koa-body');
+const multer = require('koa-multer');
 const connectDB = MOCK ? '' : require('./lib/connectDB')();
 
 const devMiddleware = KWM.devMiddleware;
@@ -42,7 +43,7 @@ app.use(favicon(path.join(__dirname, 'favicon.ico')));
 app.use(serve(path.join(__dirname, publicPath)));
 
 // 请求体解析
-app.use(bodyParser());
+app.use(koaBody({ multipart: true }));
 
 // 模板渲染
 app.use(render);
