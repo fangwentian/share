@@ -39,9 +39,6 @@ export default {
             let withoutQuery = location.href.split('?')[0];
             return `${withoutQuery}?folderId=${folderId}`;
         }
-    },
-    created() {
-        this.$store.dispatch('files/getFileList', this.currentFolder);
     }
 };
 </script>

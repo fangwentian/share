@@ -41,11 +41,11 @@ export default {
         addFile() {
             let accept;
             if (this.currentCategory.id === 1) {
-                accept = 'image/*';
+                accept = '.pdf';
             } else if (this.currentCategory.id === 2) {
-                accept = 'image/*';
+                accept = '.png,.jpg';
             } else {
-                accept = '.*';
+                accept = '';
             }
             new UploadModal({
                 propsData: {

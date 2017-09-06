@@ -5,8 +5,12 @@
                 <el-upload class="upload-demo" drag action="/upload" multiple :file-list="fileList" :accept="accept" :before-upload="check">
                     <i class="el-icon-upload"></i>
                     <div class="el-upload__text">将文件拖到此处，或<em>点击上传</em></div>
-                    <div class="el-upload__tip" slot="tip">只能上传 {{accept}} 类型文件</div>
+                    <div class="el-upload__tip" slot="tip">只能上传 <b>{{accept == '' ? '任意': accept}}</b> 类型文件</div>
                 </el-upload>
+                <div class="f-tac buttonWrap">
+                    <el-button @click="cancel">取消</el-button>
+                    <el-button type="primary" @click="confirm">确定</el-button>
+                </div>
             </div>
         </div>
     </div>
@@ -35,9 +39,9 @@ export default Vue.extend({
             document.body.removeChild(this.$el);
         },
         check(file) {
-            let fileType = file.type;
-            let regx = new RegExp(this.accept);
-            if (!regx.test(fileType)) {
+            let fileType = file.type.slice(file.type.lastIndexOf('/') + 1);
+            let res = this.accept.split(',').indexOf(fileType) !== -1;
+            if (res) {
                 this.$message({
                     message: '文件类型错误',
                     type: 'warning'
@@ -45,6 +49,12 @@ export default Vue.extend({
                 return false;
             }
             return true;
+        },
+        confirm() {
+            this.$store.dispatch('files/addFile', this.fileList);
+        },
+        cancel() {
+
         }
     }
 });
@@ -69,7 +79,7 @@ export default Vue.extend({
 .content {
     display: block;
     transform: translate3d(0, 0, 0);
-    padding: 40px 30px;
+    padding: 40px 30px 20px 30px;
     background-color: #fff;
     border-radius: 3px;
     animation: position .2s linear;
@@ -77,5 +87,22 @@ export default Vue.extend({
 @keyframes position {
     0% {transform: translate3d(0, -30px, 0);}
     100% {transform: translate3d(0, 0, 0);}
+}
+.confirm, .cancel {
+    height: 35px;
+    line-height: 35px;
+    text-align: center;
+    display: inline-block;
+    width: 60px;
+    border-radius: 3px;
+}
+.confirm {
+    background-color: #E31436
+}
+.cancel {
+    background-color: #fff;
+}
+.buttonWrap {
+    margin-top: 20px;
 }
 </style>
