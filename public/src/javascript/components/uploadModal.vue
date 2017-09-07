@@ -43,8 +43,8 @@ export default Vue.extend({
         },
         check(file) {
             let fileType = file.type.slice(file.type.lastIndexOf('/') + 1);
-            let res = this.accept.split(',').indexOf(fileType) !== -1;
-            if (res) {
+            let res = this.accept.split(',').indexOf(`.${fileType}`) !== -1;
+            if (!res) {
                 this.$message({
                     message: '文件类型错误',
                     type: 'warning'
