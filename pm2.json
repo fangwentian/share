@@ -3,6 +3,9 @@
         "name": "share",
         "script": "./app.js",
         "instances": 1,
-        "exec_mode": "cluster"
+        "exec_mode": "cluster",
+        "env": {
+            "NODE_ENV": "production"
+        }
     }]
 }
