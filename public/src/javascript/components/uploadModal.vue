@@ -59,10 +59,13 @@ export default Vue.extend({
                 url: response.url,
                 type: 'file',
                 parent: this.store.state.categories.currentFolder
-            })
+            });
         },
         confirm() {
-            this.store && this.store.dispatch('files/addFile', this.fileList);
+            let self = this;
+            this.store && this.store.dispatch('files/addFile', this.fileList).then(() => {
+                self.close();
+            });
         }
     }
 });
