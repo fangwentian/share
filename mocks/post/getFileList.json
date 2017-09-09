@@ -1,79 +1,61 @@
 {
     "code": 200,
-    "result": {
+    "message": "success",
+    "result":
+    {
         "list": [
-            {
-                "name": "Nodejs",
-                "type": "folder",
-                "parent": 1,
-                "children": [
-
-                ],
-                "_id": "1234234234234"
-            },
-            {
-                "name": "javascript高级程序设计",
-                "type": "file",
-                "parent": 1,
-                "fileExtension": "pdf",
-                "_id": "1234234234234"
-            },
-            {
-                "name": "javascript高级程序设计",
-                "type": "file",
-                "parent": 1,
-                "fileExtension": "pdf",
-                "_id": "1234234234234"
-            },
-            {
-                "name": "javascript权威指南",
-                "type": "file",
-                "parent": 1,
-                "fileExtension": "pdf",
-                "_id": "1234234234234"
-            },
-            {
-                "name": "javascript权威指南",
-                "type": "file",
-                "parent": 1,
-                "fileExtension": "pdf",
-                "_id": "1234234234234"
-            },
-            {
-                "name": "javascript权威指南",
-                "type": "file",
-                "parent": 1,
-                "fileExtension": "pdf",
-                "_id": "1234234234234"
-            },
-            {
-                "name": "javascript权威指南",
-                "type": "file",
-                "parent": 1,
-                "fileExtension": "pdf",
-                "_id": "1234234234234"
-            },
-            {
-                "name": "javascript权威指南",
-                "type": "file",
-                "parent": 1,
-                "fileExtension": "pdf",
-                "_id": "1234234234234"
-            },
-            {
-                "name": "javascript权威指南",
-                "type": "file",
-                "parent": 1,
-                "fileExtension": "pdf",
-                "_id": "1234234234234"
-            },
-            {
-                "name": "javascript权威指南",
-                "type": "file",
-                "parent": 1,
-                "fileExtension": "pdf",
-                "_id": "1234234234234"
-            }
-        ]
+        {
+            "_id": "59ae99d438a9120e481ede27",
+            "name": "nodejs",
+            "type": "folder",
+            "parent": "1",
+            "chilren": [],
+            "__v": 0
+        },
+        {
+            "_id": "59ae9a935c9be2270c7cd836",
+            "name": "123123123123",
+            "type": "folder",
+            "parent": "1",
+            "chilren": [],
+            "__v": 0
+        },
+        {
+            "_id": "59ae9ccccf1014225ca2db75",
+            "name": "11111",
+            "type": "folder",
+            "parent": "1",
+            "__v": 0
+        },
+        {
+            "_id": "59af8ae2f38e001f5c3c0e58",
+            "name": "111",
+            "type": "folder",
+            "parent": "1",
+            "__v": 0
+        },
+        {
+            "_id": "59aff39a0fa17523f0f143c9",
+            "name": "asdfasdf",
+            "type": "folder",
+            "parent": "1",
+            "__v": 0
+        },
+        {
+            "_id": "59b0baef0eecdc1c1458345f",
+            "name": "你不知道的JavaScript（中卷）.pdf",
+            "url": "https://haitao.nos.netease.com/b44e999b-91eb-4520-8aa3-a69fc22b3fc2.pdf",
+            "type": "file",
+            "parent": "1",
+            "__v": 0
+        },
+        {
+            "_id": "59b144fb82d8b31df08febb8",
+            "name": "你不知道的JavaScript（中卷）.pdf",
+            "url": "https://haitao.nos.netease.com/08f99457-9a53-4040-814b-4350839851f4.pdf",
+            "type": "file",
+            "parent": "1",
+            "__v": 0
+        }]
     }
 }

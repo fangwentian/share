@@ -17,7 +17,7 @@ export default {
 .m-operationMenu {
     position: absolute;
     left: 0;
-    top: 100%;
+    top: calc(~"100% + 7px");
 }
 .wrap {
     box-shadow: 0 2px 8px 0 #ccc;

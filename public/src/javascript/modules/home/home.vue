@@ -2,21 +2,24 @@
     <div class="m-home">
         <breadcrumb />
         <ul class="list">
-            <li v-for="(file, index) in files">
+            <li v-for="(file, index) in files" :key="index">
                 <a v-if="file.type === 'folder'" class="item" :href="calcLink(file._id)">
-                    <div class="img folderImage"></div>
+                    <div class="fileImg folderImage"></div>
                     <p class="f-tac f-toe">{{file.name}}</p>
                 </a>
                 <a v-if="file.type === 'file'" class="item" :href="file.url" target="_blank">
-                    <div v-if="getSuffix(file.url) == 'pdf'" class="img" :class="getSuffix(file.url)"></div>
-                    <img v-else-if="isImageFile(file.url)" :src="file.url" class="image">
+                    <!-- 电子书pdf -->
+                    <div v-if="getSuffix(file.url) == 'pdf'" class="fileImg" :class="getSuffix(file.url)"></div>
+                    <!-- 照片 -->
+                    <img v-else-if="isImageFile(file.url)" :src="file.url" class="photo">
+                    <!-- 其他文件 -->
+                    <div v-else class="fileImg commonfile"></div>
                     <p class="f-tac f-toe">{{file.name}}</p>
                 </a>
-                <span class="setting" @click="operation(file)"><i class="fa fa-cog" aria-hidden="true"></i></span>
-                <template v-if="index == 0">
+                <span class="setting" @click.stop="operation(file)"><i class="fa fa-cog" aria-hidden="true"></i></span>
+                <template v-if="file.isShowMenu">
                     <operationMenu />
                 </template>
-                
             </li>
         </ul>
     </div>
@@ -53,8 +56,14 @@ export default {
         isImageFile(url) {
             return ~['png', 'jpg'].indexOf(this.getSuffix(url));
         },
+        hideAllMenu() {
+            this.files.forEach((file) => {
+                file.isShowMenu = false;
+            });
+        },
         operation(file) {
-
+            this.hideAllMenu();
+            file.isShowMenu = true;
         }
     }
 };
@@ -90,12 +99,12 @@ export default {
         margin:  7px 0 10px 0;
     }
 }
-.img {
+.fileImg {
     width: 80px;
     height: 80px;
     margin: 6px 21px 0 21px;
 }
-.image {
+.photo {
     width: 80px;
     height: 80px;
     display: block;
@@ -105,17 +114,16 @@ export default {
     display: none;
     position: absolute;
     color: #666;
-    right: 4px;
-    bottom: 4px;
-    height: 20px;
-    line-height: 20px;
-    width: 20px;
+    right: 2px;
+    bottom: 2px;
+    height: 24px;
+    line-height: 24px;
+    width: 24px;
     text-align: center;
     cursor: pointer;
 }
 
-
-.fileImage {
+.commonfile {
     background: url(~root/res/images/file.png) no-repeat;
 }
 .pdf {
