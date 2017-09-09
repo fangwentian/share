@@ -4,19 +4,19 @@ import * as types from '../mutation-types';
 const state = {
     categories: [
         {
-            id: 1,
+            _id: 1,
             name: '电子书',
             route: '/books',
             icon: 'fa-file-pdf-o'
         },
         {
-            id: 2,
+            _id: 2,
             name: '照片',
             route: '/photos',
             icon: 'fa-file-image-o'
         },
         {
-            id: 3,
+            _id: 3,
             name: '其他文件',
             route: '/otherfiles',
             icon: 'fa-file-text-o'
@@ -44,7 +44,7 @@ const actions = {
         commit(types.SET_CURRENT_CATEGORY, res);
     },
     setCurrentFolder({ commit, state }, payload) {
-        commit(types.SET_CURRENT_FOLDER, payload.folderId || state.currentCategory.id);
+        commit(types.SET_CURRENT_FOLDER, payload.folderId || state.currentCategory._id);
     }
 };
 

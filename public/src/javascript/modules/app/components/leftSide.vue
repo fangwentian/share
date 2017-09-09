@@ -41,9 +41,9 @@ export default {
         addFile() {
             let self = this;
             let accept;
-            if (this.currentCategory.id === 1) {
+            if (this.currentCategory._id === 1) {
                 accept = '.pdf';
-            } else if (this.currentCategory.id === 2) {
+            } else if (this.currentCategory._id === 2) {
                 accept = '.png,.jpeg';
             } else {
                 accept = '';

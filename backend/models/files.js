@@ -10,10 +10,7 @@ let schema = new Schema({
 });
 
 schema.statics = {
-    getFileListByFolderId(id) {
-        const list = this.find({ parent: id });
-        return list;
-    }
+    
 };
 
 let File = mongoose.model('File', schema);

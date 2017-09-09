@@ -43,6 +43,10 @@ router.beforeEach((to, from, next) => {
     
     // 获取当前的filelist
     store.dispatch('files/getFileList', store.state.categories.currentFolder);
+
+    // 获取面包屑
+    store.dispatch('files/getBreadcrumb', store.state.categories.currentFolder);
+    
     next();
 });
 

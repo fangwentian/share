@@ -90,4 +90,22 @@ router.post('/deleteFile', async (ctx) => {
     }
 });
 
+router.post('/getBreadcrumb', async (ctx) => {
+    try {
+        let breadcrumb = await fileController.getBreadcrumb(ctx.request.body.folderId);
+        ctx.body = {
+            code: 200,
+            message: 'success',
+            result: {
+                breadcrumb
+            }
+        };
+    } catch (e) {
+        ctx.body = {
+            code: 500,
+            message: e
+        };
+    }
+});
+
 module.exports = router;

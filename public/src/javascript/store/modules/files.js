@@ -2,7 +2,8 @@ import axios from 'axios';
 import * as types from '../mutation-types';
 
 const state = {
-    files: []
+    files: [],
+    breadcrumb: []
 };
 
 const mutations = {
@@ -31,6 +32,9 @@ const mutations = {
     },
     [types.DELETE_FILE](state, id) {
         state.files = state.files.filter(item => item._id !== id);
+    },
+    [types.SET_BREAD_CRUMB](state, breadcrumb) {
+        state.breadcrumb = breadcrumb;
     }
 };
 
@@ -53,6 +57,13 @@ const actions = {
         axios.post('/getFileList', { folderId }).then((res) => {
             if (res.data.code === 200) {
                 commit(types.GET_FILE_LIST, res.data.result.list);
+            }
+        });
+    },
+    getBreadcrumb({ commit, state }, folderId) {
+        axios.post('/getBreadcrumb', { folderId }).then((res) => {
+            if (res.data.code === 200) {
+                commit(types.SET_BREAD_CRUMB, res.data.result.breadcrumb);
             }
         });
     },

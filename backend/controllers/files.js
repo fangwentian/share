@@ -16,11 +16,27 @@ const fileController = {
         return res;
     },
     getFileList(folderId) {
-        const list = FileModel.getFileListByFolderId(folderId);
+        const list = FileModel.find({ parent: folderId });
         return list;
     },
     deleteFile(fileId) {
         return FileModel.remove({ _id: fileId });
+    },
+    async getBreadcrumb(folderId, breadCrumb) {
+        if (!breadCrumb) {
+            breadCrumb = [];
+        }
+        if (!/^[0-9a-fA-F]{24}$/.test(folderId)) {
+            return breadCrumb;
+        }
+        let list = await FileModel.find({ _id: folderId, type: 'folder' });
+        let folder = list[0];
+        breadCrumb.push(folder);
+
+        if (folder.parent && ['1', '2', '3'].indexOf(`${folder.parent}`) === -1) {
+            return this.getBreadcrumb(folder.parent, breadCrumb);
+        }
+        return breadCrumb;
     }
 };
 
