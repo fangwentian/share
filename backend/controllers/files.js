@@ -18,6 +18,9 @@ const fileController = {
     getFileList(folderId) {
         const list = FileModel.getFileListByFolderId(folderId);
         return list;
+    },
+    deleteFile(fileId) {
+        return FileModel.remove({ _id: fileId });
     }
 };
 

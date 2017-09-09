@@ -29,6 +29,9 @@ const mutations = {
             return item;
         });
     },
+    [types.DELETE_FILE](state, id) {
+        state.files = state.files.filter(item => item._id !== id);
+    }
 };
 
 const actions = {
@@ -58,6 +61,13 @@ const actions = {
     },
     showMenu({ commit, state }, file) {
         commit(types.SHOW_MENU, file);
+    },
+    deleteFile({ commit, state }, file) {
+        axios.post('/deleteFile', { fileId: file._id }).then((res) => {
+            if (res.data.code === 200) {
+                commit(types.DELETE_FILE, file._id);
+            }
+        });
     }
 };
 

@@ -17,7 +17,7 @@
                     <p class="f-tac f-toe">{{file.name}}</p>
                 </a>
                 <span class="setting" @click.stop="operation(file)"><i class="fa fa-cog" aria-hidden="true"></i></span>
-                <operationMenu v-if="file.isShowMenu"/>
+                <operationMenu v-if="file.isShowMenu" :file="file"/>
             </li>
         </ul>
     </div>
@@ -44,9 +44,9 @@ export default {
         ]),
     },
     created() {
-        document.onclick = () => {
+        document.addEventListener('click', () => {
             this.$store.dispatch('files/hideAllMenu');
-        };
+        });
     },
     methods: {
         calcLink(folderId) {
@@ -119,6 +119,9 @@ export default {
     width: 24px;
     text-align: center;
     cursor: pointer;
+    &:hover {
+        color: #999;
+    }
 }
 
 .commonfile {

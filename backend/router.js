@@ -75,4 +75,19 @@ router.post('/addFile', async (ctx) => {
     }
 });
 
+router.post('/deleteFile', async (ctx) => {
+    try {
+        await fileController.deleteFile(ctx.request.body.fileId);
+        ctx.body = {
+            code: 200,
+            message: 'success'
+        };
+    } catch (e) {
+        ctx.body = {
+            code: 500,
+            message: e
+        };
+    }
+});
+
 module.exports = router;

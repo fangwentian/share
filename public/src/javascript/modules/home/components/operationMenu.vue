@@ -2,7 +2,7 @@
     <div class="m-operationMenu">
         <ul class="wrap">
             <li><i class="fa fa-arrow-circle-right" aria-hidden="true"></i>移动</li>
-            <li><i class="fa fa-trash" aria-hidden="true"></i>删除</li>
+            <li @click="deleteFile()"><i class="fa fa-trash" aria-hidden="true"></i>删除</li>
         </ul>
     </div>
 </template>
@@ -10,6 +10,12 @@
 <script>
 export default {
     name: 'operationMenu',
+    props: ['file'],
+    methods: {
+        deleteFile() {
+            this.$store.dispatch('files/deleteFile', this.file);
+        }
+    }
 };
 </script>
 

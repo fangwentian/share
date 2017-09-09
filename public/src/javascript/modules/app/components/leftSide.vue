@@ -30,9 +30,9 @@ export default {
         ])
     },
     created() {
-        document.onclick = () => {
+        document.addEventListener('click', () => {
             this.isShowOperations = false;
-        };
+        });
     },
     methods: {
         showOperations() {
@@ -44,7 +44,7 @@ export default {
             if (this.currentCategory.id === 1) {
                 accept = '.pdf';
             } else if (this.currentCategory.id === 2) {
-                accept = '.png,.jpg';
+                accept = '.png,.jpeg';
             } else {
                 accept = '';
             }

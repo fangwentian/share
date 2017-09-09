@@ -6,4 +6,5 @@ export const SET_CURRENT_CATEGORY = 'SET_CURRENT_CATEGORY';
 export const SET_CURRENT_FOLDER = 'SET_CURRENT_FOLDER';
 export const HIDE_ALL_MENU = 'HIDE_ALL_MENU';
 export const SHOW_MENU = 'SHOW_MENU';
+export const DELETE_FILE = 'DELETE_FILE';
 
