@@ -14,7 +14,21 @@ const mutations = {
     },
     [types.GET_FILE_LIST](state, list) {
         state.files = list;
-    }
+    },
+    [types.HIDE_ALL_MENU](state) {
+        state.files = state.files.map((file) => {
+            file.isShowMenu = false;
+            return file;
+        });
+    },
+    [types.SHOW_MENU](state, file) {
+        state.files = state.files.map((item) => {
+            if (item._id === file._id) {
+                item.isShowMenu = true;
+            }
+            return item;
+        });
+    },
 };
 
 const actions = {
@@ -38,6 +52,12 @@ const actions = {
                 commit(types.GET_FILE_LIST, res.data.result.list);
             }
         });
+    },
+    hideAllMenu({ commit, state }) {
+        commit(types.HIDE_ALL_MENU);
+    },
+    showMenu({ commit, state }, file) {
+        commit(types.SHOW_MENU, file);
     }
 };
 

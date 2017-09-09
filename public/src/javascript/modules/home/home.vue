@@ -2,7 +2,7 @@
     <div class="m-home">
         <breadcrumb />
         <ul class="list">
-            <li v-for="(file, index) in files" :key="index">
+            <li v-for="(file, index) in files" :key="file._id">
                 <a v-if="file.type === 'folder'" class="item" :href="calcLink(file._id)">
                     <div class="fileImg folderImage"></div>
                     <p class="f-tac f-toe">{{file.name}}</p>
@@ -17,9 +17,7 @@
                     <p class="f-tac f-toe">{{file.name}}</p>
                 </a>
                 <span class="setting" @click.stop="operation(file)"><i class="fa fa-cog" aria-hidden="true"></i></span>
-                <template v-if="file.isShowMenu">
-                    <operationMenu />
-                </template>
+                <operationMenu v-if="file.isShowMenu"/>
             </li>
         </ul>
     </div>
@@ -45,6 +43,11 @@ export default {
             'currentFolder'
         ]),
     },
+    created() {
+        document.onclick = () => {
+            this.$store.dispatch('files/hideAllMenu');
+        };
+    },
     methods: {
         calcLink(folderId) {
             let withoutQuery = location.href.split('?')[0];
@@ -56,14 +59,9 @@ export default {
         isImageFile(url) {
             return ~['png', 'jpg'].indexOf(this.getSuffix(url));
         },
-        hideAllMenu() {
-            this.files.forEach((file) => {
-                file.isShowMenu = false;
-            });
-        },
         operation(file) {
-            this.hideAllMenu();
-            file.isShowMenu = true;
+            this.$store.dispatch('files/hideAllMenu');
+            this.$store.dispatch('files/showMenu', file);
         }
     }
 };

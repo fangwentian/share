@@ -54,6 +54,9 @@ export default {
             margin-right: 8px;
             font-size: 14px;
         }
+        &:hover {
+            background-color: #eee;
+        }
     }
 }
 
