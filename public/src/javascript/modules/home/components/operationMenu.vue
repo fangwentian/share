@@ -8,12 +8,23 @@
 </template>
 
 <script>
+import MoveModal from 'jsComp/moveModal';
+
 export default {
     name: 'operationMenu',
     props: ['file'],
     methods: {
         deleteFile() {
             this.$store.dispatch('files/deleteFile', this.file);
+        },
+        moveFile() {
+            let self = this;
+            new MoveModal({
+                propsData: {
+                    accept: '',
+                    store: self.$store
+                }
+            });
         }
     }
 };
