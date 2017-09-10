@@ -5,7 +5,7 @@
             <div class="f-fr" @click.stop="toggleSearch">
                 <div class="expand" v-if="isShowSearch" @click.stop>
                     <i class="fa fa-search" aria-hidden="true"></i>
-                    <input type="text" class="search" placeholder="输入文件名搜索">
+                    <input type="text" class="search" placeholder="输入文件名搜索" @keyup.enter="search">
                 </div>
                 <div class="collapse" v-else>
                     <i class="fa fa-search" aria-hidden="true"></i>搜索
@@ -31,6 +31,9 @@ export default {
     methods: {
         toggleSearch() {
             this.isShowSearch = !this.isShowSearch;
+        },
+        search() {
+            
         }
     }
 };
