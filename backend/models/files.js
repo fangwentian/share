@@ -7,6 +7,7 @@ let schema = new Schema({
     type: String,          // file or folder
     url: String,           // 地址
     parent: String,        // 所属的父文件夹 _id
+    fileType: String       // 文件的MIME type
 });
 
 schema.statics = {

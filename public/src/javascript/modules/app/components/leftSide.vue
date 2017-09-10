@@ -42,9 +42,9 @@ export default {
             let self = this;
             let accept;
             if (this.currentCategory._id === 1) {
-                accept = '.pdf';
+                accept = 'application/pdf';
             } else if (this.currentCategory._id === 2) {
-                accept = '.png,.jpeg';
+                accept = 'image/png,image/jpeg';
             } else {
                 accept = '';
             }

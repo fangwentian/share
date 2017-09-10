@@ -2,7 +2,7 @@
     <div class="cover" @click="close">
         <div class="content" @click.stop>
             <div>
-                <el-upload class="upload-demo" drag action="/upload" multiple :file-list="fileList" :accept="accept" :before-upload="check" :on-success="uploaded">
+                <el-upload class="upload-demo" drag action="/upload" multiple :file-list="list" :accept="accept" :before-upload="check" :on-success="uploaded">
                     <i class="el-icon-upload"></i>
                     <div class="el-upload__text">将文件拖到此处，或<em>点击上传</em></div>
                     <div class="el-upload__tip" slot="tip">只能上传 <b>{{accept == '' ? '任意': accept}}</b> 类型文件</div>
@@ -29,6 +29,7 @@ export default Vue.extend({
     },
     data() {
         return {
+            list: [],
             fileList: []
         };
     },
@@ -42,23 +43,26 @@ export default Vue.extend({
             document.body.removeChild(this.$el);
         },
         check(file) {
-            let fileType = file.type.slice(file.type.lastIndexOf('/') + 1);
-            let res = this.accept.split(',').indexOf(`.${fileType}`) !== -1;
-            if (!res) {
-                this.$message({
-                    message: '文件类型错误',
-                    type: 'warning'
-                });
-                return false;
+            if (this.accept) {
+                let fileType = file.type;
+                let res = this.accept.split(',').indexOf(`${fileType}`) !== -1;
+                if (!res) {
+                    this.$message({
+                        message: '文件类型错误',
+                        type: 'warning'
+                    });
+                    return false;
+                }
             }
             return true;
         },
-        uploaded(response, file, fileList) {
+        uploaded(response, file, list) {
             this.fileList.push({
                 name: response.name,
                 url: response.url,
                 type: 'file',
-                parent: this.store.state.categories.currentFolder
+                parent: this.store.state.categories.currentFolder,
+                fileType: file.raw.type
             });
         },
         confirm() {

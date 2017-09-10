@@ -9,9 +9,9 @@
                 </a>
                 <a v-if="file.type === 'file'" class="item" :href="file.url" target="_blank">
                     <!-- 电子书pdf -->
-                    <div v-if="getSuffix(file.url) == 'pdf'" class="fileImg" :class="getSuffix(file.url)"></div>
+                    <div v-if="convertFileType(file.fileType) == 'pdf'" class="fileImg pdf"></div>
                     <!-- 照片 -->
-                    <img v-else-if="isImageFile(file.url)" :src="file.url" class="photo">
+                    <img v-else-if="['jpg', 'png'].indexOf(convertFileType(file.fileType)) !== -1" :src="file.url" class="photo">
                     <!-- 其他文件 -->
                     <div v-else class="fileImg commonfile"></div>
                     <p class="f-tac f-toe">{{file.name}}</p>
@@ -27,6 +27,7 @@
 import { mapState } from 'vuex';
 import breadcrumb from './components/breadcrumb';
 import operationMenu from './components/operationMenu';
+import homeMixin from './homeMixin';
 
 export default {
     name: 'home',
@@ -34,6 +35,7 @@ export default {
         breadcrumb,
         operationMenu
     },
+    mixins: [homeMixin],
     computed: {
         ...mapState('files', [
             'files'
@@ -116,9 +118,10 @@ export default {
     bottom: 2px;
     height: 24px;
     line-height: 24px;
-    width: 24px;
-    text-align: center;
+    width: 117px;
+    text-align: right;
     cursor: pointer;
+    padding: 0 7px;
     &:hover {
         color: #999;
     }

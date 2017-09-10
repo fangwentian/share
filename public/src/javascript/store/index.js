@@ -18,6 +18,6 @@ const store = new Vuex.Store({
         categories,
         files
     }
-})
+});
 
 export default store;
