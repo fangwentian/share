@@ -1,6 +1,6 @@
 <template>
     <div>
-        <div class="f-pr">
+        <div class="f-pr" :class='{disable: isDisabled}'>
             <a href="javascript:;" class="new" @click.stop="showOperations">新建</a>
             <ul class="operations" v-if="isShowOperations">
                 <li @click="addFile"><i class="fa fa-upload" aria-hidden="true"></i>导入文件</li>
@@ -27,7 +27,10 @@ export default {
             'categories',
             'currentCategory',
             'currentFolder'
-        ])
+        ]),
+        isDisabled() {
+            return this.$route.path === '/search';
+        }
     },
     created() {
         document.addEventListener('click', () => {
@@ -85,6 +88,12 @@ export default {
 };
 </script>
 <style scoped lang="less">
+.disable {
+    .new {
+        pointer-events: none;
+        background-color: #ccced0;
+    }
+}
 .new {
     width: 80px;
     display: block;

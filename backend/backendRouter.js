@@ -108,4 +108,22 @@ router.post('/getBreadcrumb', async (ctx) => {
     }
 });
 
+router.post('/searchFileList', async (ctx) => {
+    try {
+        let list = await fileController.searchFileList(ctx.request.body.keyWords || '');
+        ctx.body = {
+            code: 200,
+            message: 'success',
+            result: {
+                list
+            }
+        };
+    } catch (e) {
+        ctx.body = {
+            code: 500,
+            message: e
+        };
+    }
+});
+
 module.exports = router;

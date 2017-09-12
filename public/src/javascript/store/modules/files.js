@@ -16,6 +16,9 @@ const mutations = {
     [types.GET_FILE_LIST](state, list) {
         state.files = list;
     },
+    [types.SEARCH_FILE_LIST](state, list) {
+        state.files = list;
+    },
     [types.HIDE_ALL_MENU](state) {
         state.files = state.files.map((file) => {
             file.isShowMenu = false;
@@ -77,6 +80,13 @@ const actions = {
         axios.post('/deleteFile', { fileId: file._id }).then((res) => {
             if (res.data.code === 200) {
                 commit(types.DELETE_FILE, file._id);
+            }
+        });
+    },
+    searchFileList({ commit, state }, keyWords) {
+        axios.post('/searchFileList', { keyWords }).then((res) => {
+            if (res.data.code === 200) {
+                commit(types.SEARCH_FILE_LIST, res.data.result.list);
             }
         });
     }

@@ -40,7 +40,7 @@ const actions = {
         let categories = state.categories;
         let res = categories.filter((item) => {
             return payload.fullPath.indexOf(item.route) === 0;
-        })[0];
+        })[0] || {};
         commit(types.SET_CURRENT_CATEGORY, res);
     },
     setCurrentFolder({ commit, state }, payload) {

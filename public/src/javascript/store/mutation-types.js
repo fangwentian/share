@@ -8,4 +8,5 @@ export const HIDE_ALL_MENU = 'HIDE_ALL_MENU';
 export const SHOW_MENU = 'SHOW_MENU';
 export const DELETE_FILE = 'DELETE_FILE';
 export const SET_BREAD_CRUMB = 'SET_BREAD_CRUMB';
+export const SEARCH_FILE_LIST = 'SEARCH_FILE_LIST';
 

@@ -1,6 +1,6 @@
 <template>
     <div class="m-home">
-        <breadcrumb />
+        <breadcrumb/>
         <ul class="list">
             <li v-for="(file, index) in files" :key="file._id">
                 <a v-if="file.type === 'folder'" class="item" :href="calcLink(file._id)">
