@@ -1,4 +1,5 @@
 # share
+用来分享电子书、照片等各种文件的平台。
 
 #### 命令
 - 本地mock模式：npm run mock
@@ -11,3 +12,9 @@
 
 访问：
 http://localhost:5000
+
+#### 效果图
+
+仿石墨文档的风格
+
+![](https://haitao.nos.netease.com/cfeec7ce-07ca-4536-86a8-50ac3f037609.png)

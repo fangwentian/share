@@ -1,9 +1,9 @@
 const router = require('koa-router')();
 const nos = require('../lib/nos');
 const fileController = require('./controllers/files');
-const multer = require('koa-multer')({ dest: 'uploads/' });
+const multer = require('koa-multer')();
 
-router.post('/upload', multer.single('file'), async (ctx) => {    
+router.post('/upload', multer.single('file'), async (ctx) => {
     let result = await nos(ctx.request.body.files.file);
     ctx.body = {
         code: 200,
