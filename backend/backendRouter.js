@@ -126,4 +126,22 @@ router.post('/searchFileList', async (ctx) => {
     }
 });
 
+router.post('/getAllFiles', async (ctx) => {
+    try {
+        let list = await fileController.getAllFiles();
+        ctx.body = {
+            code: 200,
+            message: 'success',
+            result: {
+                list
+            }
+        };
+    } catch (e) {
+        ctx.body = {
+            code: 500,
+            message: e
+        };
+    }
+});
+
 module.exports = router;

@@ -19,6 +19,10 @@ const fileController = {
         const list = FileModel.find({ parent: folderId });
         return list;
     },
+    getAllFiles() {
+        const list = FileModel.find();
+        return list;
+    },
     searchFileList(keyWords) {
         let regx = new RegExp(keyWords);
         const list = FileModel.find({ name: { $regex: regx } });

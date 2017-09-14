@@ -3,7 +3,8 @@
         <template v-for="(item, index) in totalBreadcrumb">
             <template v-if="index !== (totalBreadcrumb.length - 1)">
                 <a :href='calcLink(item._id)' class="link">{{item.name}}</a>
-                <span class="arrow">&gt;</span>
+                <!-- <span class="arrow">&gt;</span> -->
+                <i class="fa fa-angle-right arrow" aria-hidden="true"></i>
             </template>
             <template v-else>
                 <span>{{item.name}}</span>
@@ -45,9 +46,11 @@ export default {
     padding: 5px 20px 10px 20px;
     color: #555;
     font-size: 13px;
+    line-height: 16px;
 }
 .arrow {
     margin: 0 6px;
+    font-size: 14px;
 }
 .link {
     color: #6886aa;
