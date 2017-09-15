@@ -46,6 +46,9 @@ const fileController = {
             return this.getBreadcrumb(folder.parent, breadCrumb);
         }
         return breadCrumb;
+    },
+    moveFile(file, targetFolder) {
+        FileModel.update({ _id: file._id }, { $set: { parent: targetFolder._id } });
     }
 };
 

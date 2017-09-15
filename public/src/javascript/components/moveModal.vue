@@ -3,14 +3,19 @@
         <div class="content" @click.stop>
             <div class="head">
                 <i class="fa fa-arrow-left" aria-hidden="true" @click="back()"></i>
-                <span>移动文件</span>
+                <span>移动到 - {{this.targetFolder.name}}</span>
             </div>
             <ul class="fileList">
-                <li v-for="(item, index) in fileList" :class="{ clickable: item.type === 'folder' }" @click="subFolder(item, index)">
-                    <div v-if="item.type === 'folder'" class="folderImage fileImg"></div>
-                    <div v-else class="commonfile fileImg"></div>
-                    <div>{{item.name}}</div>
-                    <i v-if="item.type === 'folder'" class="fa fa-angle-right" aria-hidden="true"></i>
+                <template v-if="fileList.length > 0">
+                    <li v-for="(item, index) in fileList" :class="{ clickable: item.type === 'folder' }" @click="subFolder(item, index)">
+                        <div v-if="item.type === 'folder'" class="folderImage fileImg"></div>
+                        <div v-else class="commonfile fileImg"></div>
+                        <div>{{item.name}}</div>
+                        <i v-if="item.type === 'folder'" class="fa fa-angle-right" aria-hidden="true"></i>
+                    </li>
+                </template>
+                <li v-else class="empty">
+                    文件夹为空
                 </li>
             </ul>
             <div class="foot f-tar">
@@ -21,12 +26,15 @@
 </template>
 <script>
 import Vue from 'vue';
+import axios from 'axios';
 
 export default Vue.extend({
     props: {
         store: {
             default: '',
-            file: null
+        },
+        file: {
+            default: null
         }
     },
     computed: {
@@ -35,6 +43,15 @@ export default Vue.extend({
         },
         fileHierarchy() {
             return this.store.state.files.fileHierarchy;
+        },
+        targetFolder() {
+            if (this.path.length === 0) {
+                return this.currentCategory;
+            } else {
+                return this.path.slice(0, this.path.length - 1).reduce((curent, next) => {
+                    return curent[next];
+                }, this.fileHierarchy);
+            }
         },
         fileList() {
             return this.path.reduce((curent, next) => {
@@ -67,7 +84,11 @@ export default Vue.extend({
             this.path = this.path.slice(0, this.path.length - 2);
         },
         confirm() {
-
+            axios.post('/move', { file: this.file, targetFolder: this.targetFolder }).then((res) => {
+                if (res.data.code === 200) {
+                    location.reload();
+                }
+            });
         }
     }
 });
@@ -108,7 +129,7 @@ export default Vue.extend({
     line-height: 63px;
     font-size: 16px;
     font-weight: bold;
-    color: #444;
+    color: #555;
     border-bottom: solid 1px #ddd;
     i {
         margin-right: 10px;
@@ -156,6 +177,8 @@ export default Vue.extend({
         background-color: #f5f2f2;
     }
 }
-
+.empty {
+    color: #bbb;
+}
 
 </style>

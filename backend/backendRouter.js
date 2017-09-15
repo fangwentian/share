@@ -144,4 +144,22 @@ router.post('/getAllFiles', async (ctx) => {
     }
 });
 
+router.post('/move', async (ctx) => {
+    try {
+        let file = ctx.request.body.file;
+        let targetFolder = ctx.request.body.targetFolder;
+
+        await fileController.moveFile(file, targetFolder);
+        ctx.body = {
+            code: 200,
+            message: 'success'
+        };
+    } catch (e) {
+        ctx.body = {
+            code: 500,
+            message: e
+        };
+    }
+});
+
 module.exports = router;

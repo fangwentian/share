@@ -121,6 +121,14 @@ const actions = {
                 commit(types.GET_FILE_HIERARCHY, { list: res.data.result.list, categoryId });
             }
         });
+    },
+    move({ commit, state }, payload) {
+        let { file, targetFolder } = payload;
+        axios.post('/move', { file, targetFolder }).then((res) => {
+            if (res.data.code === 200) {
+                
+            }
+        });
     }
 };
 
