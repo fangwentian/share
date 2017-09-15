@@ -1,6 +1,6 @@
 <template>
     <div class="m-home">
-        <breadcrumb/>
+        <breadcrumb v-if="path !== '/search'"/>
         <ul class="list">
             <li v-for="(file, index) in files" :key="file._id">
                 <a v-if="file.type === 'folder'" class="item" :href="calcLink(file._id)">
@@ -44,6 +44,9 @@ export default {
             'currentCategory',
             'currentFolder'
         ]),
+        path() {
+            return this.$route.path;
+        }
     },
     created() {
         document.addEventListener('click', () => {

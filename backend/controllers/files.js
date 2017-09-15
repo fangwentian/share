@@ -25,7 +25,7 @@ const fileController = {
     },
     searchFileList(keyWords) {
         let regx = new RegExp(keyWords);
-        const list = FileModel.find({ name: { $regex: regx } });
+        const list = FileModel.find({ name: { $regex: regx }, type: 'file' });
         return list;
     },
     deleteFile(fileId) {
