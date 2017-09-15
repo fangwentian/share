@@ -1,7 +1,20 @@
 <template>
     <div class="cover" @click="close">
         <div class="content" @click.stop>
-            <div>
+            <div class="head">
+                <i class="fa fa-arrow-left" aria-hidden="true" @click="back()"></i>
+                <span>移动文件</span>
+            </div>
+            <ul class="fileList">
+                <li v-for="(item, index) in fileList" :class="{ clickable: item.type === 'folder' }" @click="subFolder(item, index)">
+                    <div v-if="item.type === 'folder'" class="folderImage fileImg"></div>
+                    <div v-else class="commonfile fileImg"></div>
+                    <div>{{item.name}}</div>
+                    <i v-if="item.type === 'folder'" class="fa fa-angle-right" aria-hidden="true"></i>
+                </li>
+            </ul>
+            <div class="foot f-tar">
+                <el-button type="primary" @click="confirm">移动到当前文件夹</el-button>
             </div>
         </div>
     </div>
@@ -12,7 +25,8 @@ import Vue from 'vue';
 export default Vue.extend({
     props: {
         store: {
-            default: ''
+            default: '',
+            file: null
         }
     },
     computed: {
@@ -21,11 +35,16 @@ export default Vue.extend({
         },
         fileHierarchy() {
             return this.store.state.files.fileHierarchy;
+        },
+        fileList() {
+            return this.path.reduce((curent, next) => {
+                return curent[next];
+            }, this.fileHierarchy);
         }
     },
     data() {
         return {
-            fileList: []
+            path: []
         };
     },
     created() {
@@ -37,6 +56,18 @@ export default Vue.extend({
         close() {
             this.$destroy();
             document.body.removeChild(this.$el);
+        },
+        subFolder(folder, index) {
+            if (folder.type !== 'folder') {
+                return false;
+            }
+            this.path = this.path.concat([index, 'children']);
+        },
+        back() {
+            this.path = this.path.slice(0, this.path.length - 2);
+        },
+        confirm() {
+
         }
     }
 });
@@ -59,32 +90,72 @@ export default Vue.extend({
     100% {background-color: rgba(0, 0, 0, 0.5);}
 }
 .content {
-    display: block;
+    display: block; width: 480px;
     transform: translate3d(0, 0, 0);
-    padding: 40px 30px 20px 30px;
+    padding: 0 30px 15px 30px;
     background-color: #fff;
     border-radius: 3px;
     animation: position .2s linear;
+    color: #333;
 }
 @keyframes position {
     0% {transform: translate3d(0, -30px, 0);}
     100% {transform: translate3d(0, 0, 0);}
 }
-.confirm, .cancel {
-    height: 35px;
-    line-height: 35px;
-    text-align: center;
-    display: inline-block;
-    width: 60px;
-    border-radius: 3px;
+.head {
+    height: 60px;
+    text-align: left;
+    line-height: 63px;
+    font-size: 16px;
+    font-weight: bold;
+    color: #444;
+    border-bottom: solid 1px #ddd;
+    i {
+        margin-right: 10px;
+        cursor: pointer;
+    }
 }
-.confirm {
-    background-color: #E31436
+.fileList {
+    padding: 10px 0;
+    li {
+        height: 45px;
+        line-height: 45px;
+        position: relative;
+        border-radius: 2px;
+        padding: 0 5px;
+        div {
+            display: inline-block;
+        }
+        i {
+            line-height: 45px;
+            position: absolute;
+            right: 5px; top: 0;
+            font-size: 15px;
+        }
+    }
+    .fileImg {
+        width: 26px;
+        height: 26px;
+        position: relative;
+        top: 9px;
+        margin-right: 12px;
+    }
 }
-.cancel {
-    background-color: #fff;
+.commonfile, .folderImage {
+    background-size: 170px 70px;
 }
-.buttonWrap {
-    margin-top: 20px;
+.commonfile {
+    background: url(~root/res/images/file_icons.png) no-repeat 0 0;
 }
+.folderImage {
+    background: url(~root/res/images/file_icons.png) no-repeat -52px 0;
+}
+.clickable {
+    cursor: pointer;
+    &:hover {
+        background-color: #f5f2f2;
+    }
+}
+
+
 </style>

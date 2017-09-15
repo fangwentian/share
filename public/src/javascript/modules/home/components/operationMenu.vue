@@ -21,7 +21,8 @@ export default {
             let self = this;
             new MoveModal({
                 propsData: {
-                    store: self.$store
+                    store: self.$store,
+                    file: self.file
                 }
             });
         }
