@@ -3,7 +3,26 @@ import * as types from '../mutation-types';
 
 const state = {
     files: [],
-    breadcrumb: []
+    breadcrumb: [],
+    fileHierarchy: []
+};
+
+// 处理数据方法
+const handlers = {
+    getChild(list, parentID) {
+        let res = list.filter((item) => {
+            return `${item.parent}` === `${parentID}`;
+        });
+        res.forEach((item) => {
+            if (item.type === 'folder') {
+                item.children = handlers.getChild(list, item._id);
+            }
+        });
+        return res;
+    },
+    getFileHierarchy(list, categoryId) {
+        return this.getChild(list, categoryId);
+    }
 };
 
 const mutations = {
@@ -38,6 +57,11 @@ const mutations = {
     },
     [types.SET_BREAD_CRUMB](state, breadcrumb) {
         state.breadcrumb = breadcrumb;
+    },
+    [types.GET_FILE_HIERARCHY](state, payload) {
+        let { list, categoryId } = payload;
+        let res = handlers.getFileHierarchy(list, categoryId);
+        state.fileHierarchy = res;
     }
 };
 
@@ -87,6 +111,14 @@ const actions = {
         axios.post('/searchFileList', { keyWords }).then((res) => {
             if (res.data.code === 200) {
                 commit(types.SEARCH_FILE_LIST, res.data.result.list);
+            }
+        });
+    },
+    // 获取某一个分给下的文件夹层级，action获取全部的文件，mutation去组装
+    getFileHierarchy({ commit, state }, categoryId) {
+        axios.post('/getAllFiles').then((res) => {
+            if (res.data.code === 200) {
+                commit(types.GET_FILE_HIERARCHY, { list: res.data.result.list, categoryId });
             }
         });
     }

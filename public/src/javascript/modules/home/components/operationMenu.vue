@@ -1,7 +1,7 @@
 <template>
     <div class="m-operationMenu">
         <ul class="wrap">
-            <li><i class="fa fa-arrow-circle-right" aria-hidden="true"></i>移动</li>
+            <li @click="moveFile()"><i class="fa fa-arrow-circle-right" aria-hidden="true"></i>移动</li>
             <li @click="deleteFile()"><i class="fa fa-trash" aria-hidden="true"></i>删除</li>
         </ul>
     </div>
@@ -21,7 +21,6 @@ export default {
             let self = this;
             new MoveModal({
                 propsData: {
-                    accept: '',
                     store: self.$store
                 }
             });

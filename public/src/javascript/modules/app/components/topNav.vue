@@ -27,6 +27,7 @@ export default {
     created() {
         document.addEventListener('click', () => {
             this.isShowSearch = false;
+            this.keyWords = '';
         });
     },
     methods: {
