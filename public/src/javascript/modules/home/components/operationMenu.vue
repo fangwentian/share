@@ -12,18 +12,21 @@ import MoveModal from 'jsComp/moveModal';
 
 export default {
     name: 'operationMenu',
-    props: ['file'],
+    props: ['file', 'currentFolder'],
     methods: {
         deleteFile() {
             this.$store.dispatch('files/deleteFile', this.file);
         },
         moveFile() {
             let self = this;
-            new MoveModal({
+            let _modal = new MoveModal({
                 propsData: {
                     store: self.$store,
                     file: self.file
                 }
+            });
+            _modal.$on('move_success', () => {
+                this.$store.dispatch('files/getFileList', this.currentFolder);
             });
         }
     }

@@ -7,7 +7,7 @@
             </div>
             <ul class="fileList">
                 <template v-if="fileList.length > 0">
-                    <li v-for="(item, index) in fileList" :class="{ clickable: item.type === 'folder' }" @click="subFolder(item, index)">
+                    <li v-for="(item, index) in fileList" :class="{ clickable: item.type === 'folder', disable: item._id === file.parent || item._id === file._id }" @click="subFolder(item, index)">
                         <div v-if="item.type === 'folder'" class="folderImage fileImg"></div>
                         <div v-else class="commonfile fileImg"></div>
                         <div>{{item.name}}</div>
@@ -86,7 +86,12 @@ export default Vue.extend({
         confirm() {
             axios.post('/move', { file: this.file, targetFolder: this.targetFolder }).then((res) => {
                 if (res.data.code === 200) {
-                    location.reload();
+                    this.$message({
+                        message: '移动文件成功',
+                        type: 'success'
+                    });
+                    this.$emit('move_success');
+                    this.close();
                 }
             });
         }
@@ -176,6 +181,10 @@ export default Vue.extend({
     &:hover {
         background-color: #f5f2f2;
     }
+}
+.disable {
+    color: #aaa;
+    pointer-events: none;
 }
 .empty {
     color: #bbb;

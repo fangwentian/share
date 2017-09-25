@@ -17,7 +17,7 @@
                     <p class="f-tac f-toe">{{file.name}}</p>
                 </a>
                 <span class="setting" @click.stop="operation(file)"><i class="fa fa-cog" aria-hidden="true"></i></span>
-                <operationMenu v-if="file.isShowMenu" :file="file"/>
+                <operationMenu v-if="file.isShowMenu" :file="file" :currentFolder="currentFolder" />
             </li>
         </ul>
     </div>

@@ -48,7 +48,7 @@ const fileController = {
         return breadCrumb;
     },
     moveFile(file, targetFolder) {
-        FileModel.update({ _id: file._id }, { $set: { parent: targetFolder._id } });
+        return FileModel.update({ _id: file._id }, { $set: { parent: targetFolder._id } });
     }
 };
 

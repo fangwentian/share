@@ -11,12 +11,6 @@ router.post('/upload', multer.single('file'), async (ctx) => {
         name: result.name,
         url: result.url
     };
-    // ctx.body = {
-    //     code: 200,
-    //     message: 'success',
-    //     name: 'canvas.pdf',
-    //     url: 'https://haitao.nos.netease.com/76a00512-7522-4d4f-a7fd-ea9cac79adc0.png'
-    // };
 });
 
 router.post('/getFileList', async (ctx) => {
