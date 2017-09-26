@@ -10,25 +10,24 @@ const fileController = {
         }
         return list;
     },
-    addFolder(folder) {
+    async addFolder(folder) {
         let instance = new FileModel(folder);
         let res = instance.save();
         return res;
     },
-    getFileList(folderId) {
-        const list = FileModel.find({ parent: folderId });
-        return list;
+    async getFileList(folderId) {
+        return FileModel.find({ parent: folderId });
     },
-    getAllFiles() {
+    async getAllFiles() {
         const list = FileModel.find();
         return list;
     },
-    searchFileList(keyWords) {
-        let regx = new RegExp(keyWords);
+    async searchFileList(keyWords) {
+        let regx = new RegExp(keyWords, 'i');
         const list = FileModel.find({ name: { $regex: regx }, type: 'file' });
         return list;
     },
-    deleteFile(fileId) {
+    async deleteFile(fileId) {
         return FileModel.remove({ _id: fileId });
     },
     async getBreadcrumb(folderId, breadCrumb) {
@@ -47,7 +46,7 @@ const fileController = {
         }
         return breadCrumb;
     },
-    moveFile(file, targetFolder) {
+    async moveFile(file, targetFolder) {
         return FileModel.update({ _id: file._id }, { $set: { parent: targetFolder._id } });
     }
 };

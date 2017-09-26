@@ -3,11 +3,29 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 let schema = new Schema({
-    name: String,          // 文件 || 文件夹名称
-    type: String,          // file or folder
-    url: String,           // 地址
-    parent: String,        // 所属的父文件夹 _id
-    fileType: String       // 文件的MIME type
+    // 文件 || 文件夹名称
+    name: {
+        type: String,
+        required: true
+    },
+    // file or folder
+    type: {
+        type: String,
+        required: true
+    },
+    // 地址
+    url: {
+        type: String,
+    },
+    // 所属的父文件夹 _id
+    parent: {
+        type: String,
+        required: true
+    },
+    // 文件的MIME type
+    fileType: {
+        type: String
+    }
 });
 
 schema.statics = {
