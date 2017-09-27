@@ -11,7 +11,7 @@
                     <!-- 电子书pdf -->
                     <div v-if="convertFileType(file.fileType) == 'pdf'" class="fileImg pdf"></div>
                     <!-- 照片 -->
-                    <img v-else-if="['jpg', 'png'].indexOf(convertFileType(file.fileType)) !== -1" :src="file.url" class="photo">
+                    <img v-else-if="['jpg', 'png'].indexOf(convertFileType(file.fileType)) !== -1" :src="file.url + '?imageView&thumbnail=80x0&quality=85'" class="photo">
                     <!-- 其他文件 -->
                     <div v-else class="fileImg commonfile"></div>
                     <p class="f-tac f-toe">{{file.name}}</p>

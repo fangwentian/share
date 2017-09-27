@@ -15,7 +15,7 @@ let schema = new Schema({
     },
     // 地址
     url: {
-        type: String,
+        type: String
     },
     // 所属的父文件夹 _id
     parent: {

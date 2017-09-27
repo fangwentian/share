@@ -9,7 +9,8 @@
                 </el-upload>
                 <div class="f-tac buttonWrap">
                     <el-button @click="close">取消</el-button>
-                    <el-button type="primary" @click="confirm">确定</el-button>
+                    <el-button v-if="isUploadSuccess" type="primary" @click="confirm">确定</el-button>
+                    <el-button v-else type="primary" :disabled="true">确定</el-button>
                 </div>
             </div>
         </div>
@@ -30,7 +31,8 @@ export default Vue.extend({
     data() {
         return {
             list: [],
-            fileList: []
+            fileList: [],
+            isUploadSuccess: false
         };
     },
     created() {
@@ -57,6 +59,8 @@ export default Vue.extend({
             return true;
         },
         uploaded(response, file, list) {
+            this.isUploadSuccess = true;
+
             this.fileList.push({
                 name: response.name,
                 url: response.url,

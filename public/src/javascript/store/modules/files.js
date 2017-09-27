@@ -10,9 +10,7 @@ const state = {
 // 处理数据方法
 const handlers = {
     getChild(list, parentID) {
-        let res = list.filter((item) => {
-            return `${item.parent}` === `${parentID}`;
-        });
+        let res = list.filter(item => `${item.parent}` === `${parentID}`);
         res.forEach((item) => {
             if (item.type === 'folder') {
                 item.children = handlers.getChild(list, item._id);
