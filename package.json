@@ -8,7 +8,8 @@
     "build": "webpack --progress --profile --colors",
     "server": "node app.js",
     "dev": "cross-env NODE_ENV=development run-p build server",
-    "mock": "cross-env NODE_ENV=mock run-p build server"
+    "mock": "cross-env NODE_ENV=mock run-p build server",
+    "prod": "cross-env NODE_ENV=production run-p build && pm2 start pm2.json"
   },
   "author": "",
   "license": "ISC",
