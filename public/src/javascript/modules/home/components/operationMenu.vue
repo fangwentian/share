@@ -1,6 +1,10 @@
 <template>
     <div class="m-operationMenu">
         <ul class="wrap">
+            <li class="f-toe f-pr" @click.stop>
+                <input type="text" class="rename" v-model="fileName">
+                <!-- <i class="fa fa-check confirm" aria-hidden="true"></i> -->
+            </li>
             <li @click="moveFile()"><i class="fa fa-arrow-circle-right" aria-hidden="true"></i>移动</li>
             <li @click="deleteFile()"><i class="fa fa-trash" aria-hidden="true"></i>删除</li>
         </ul>
@@ -13,7 +17,23 @@ import MoveModal from 'jsComp/moveModal';
 export default {
     name: 'operationMenu',
     props: ['file', 'currentFolder'],
+    data() {
+        return {
+            fileName: this.file.name
+        }
+    },
+    created() {
+        var self = this;
+        document.addEventListener('click', self.eventlistener);
+    },
     methods: {
+        eventlistener() {
+            var self = this;
+            if(this.fileName != this.file.name) {
+                console.log(3333)
+            }
+            document.removeEventListener('click', self.eventlistener);
+        },
         deleteFile() {
             this.$confirm('此操作将永久删除该文件, 是否继续?', '提示', {
                 confirmButtonText: '确定',
@@ -64,7 +84,6 @@ export default {
     border-radius: 3px;
     position: relative;
     padding: 8px 0;
-    width: 150px;
     border: solid 1px #e6e5e5;
     &:before {
         content: '';
@@ -77,21 +96,52 @@ export default {
         position: absolute;
         background-color: #fff;
         top: -5px;
-        right: 36px;
+        left: 50%;
+        margin-left: -4px;
     }
     li {
         height: 36px;
         line-height: 36px;
-        padding: 0 20px;
-        cursor: pointer;
+        padding: 0 10px;
+        &:not(:first-child) {
+            cursor: pointer;
+        }
         i {
             margin-right: 8px;
             font-size: 14px;
         }
-        &:hover {
+        &:not(:first-child):hover {
             background-color: #eee;
         }
     }
+}
+.rename {
+    display: block;
+    height: 35px;
+    line-height: 20px;
+    padding: 3px 9px 3px 9px;
+    margin-right: 0;
+    width: 100%;
+    border-radius: 2px;
+    border: 1px solid #e5e5e5;
+    box-shadow: inset 0 1px 3px 0 #e5e5e5;
+    font-size: 12px;
+    color: #555;
+    vertical-align: middle;
+    background-color: #fff;
+    background-image: none;
+    outline: none;
+}
+.confirm {
+    cursor: pointer;
+    position: absolute;
+    color: #1ebe8b;
+    font-size: 18px;
+    top: 0;
+    right: 10px;
+    line-height: 35px;
+    margin-right: 0 !important;
+    width: 20px;
 }
 
 </style>
