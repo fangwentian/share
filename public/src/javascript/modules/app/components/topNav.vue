@@ -1,7 +1,7 @@
 <template>
     <header>
         <div class="container">
-            <router-link to="/" exact>考拉文档</router-link>
+            <router-link to="/" exact>考拉分享</router-link>
             <div class="f-fr" @click.stop="toggleSearch">
                 <div class="expand" v-if="isShowSearch" @click.stop>
                     <i class="fa fa-search" aria-hidden="true"></i>
