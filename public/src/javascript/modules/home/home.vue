@@ -5,7 +5,7 @@
             <li v-for="(file, index) in files" :key="file._id">
                 <a v-if="file.type === 'folder'" class="item" :href="calcLink(file._id)">
                     <div class="fileImg folderImage"></div>
-                    <p class="f-tac f-toe">{{file.name}}</p>
+                    <p class="f-tac f-toe-2">{{file.name}}</p>
                 </a>
                 <a v-if="file.type === 'file'" class="item" :href="file.url" target="_blank">
                     <!-- 电子书pdf -->
@@ -14,7 +14,7 @@
                     <img v-else-if="['jpg', 'png'].indexOf(convertFileType(file.fileType)) !== -1" :src="file.url + '?imageView&thumbnail=80x0&quality=85'" class="photo">
                     <!-- 其他文件 -->
                     <div v-else class="fileImg commonfile"></div>
-                    <p class="f-tac f-toe">{{file.name}}</p>
+                    <p class="f-tac f-toe-2">{{file.name}}</p>
                 </a>
                 <span class="setting" @click.stop="operation(file)"><i class="fa fa-cog" aria-hidden="true"></i></span>
                 <operationMenu v-if="file.isShowMenu" :file="file" :currentFolder="currentFolder" />
@@ -94,7 +94,7 @@ export default {
 .item {
     display: block;
     width: 122px;
-    height: 127px;
+    height: 132px;
     flex: 1 0 0;
     color: #555;
     p {
