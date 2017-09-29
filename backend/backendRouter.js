@@ -140,7 +140,7 @@ router.post('/getAllFiles', async (ctx) => {
 
 router.post('/move', async (ctx) => {
     try {
-        let { file, targetFolder } = ctx.request.body.file;
+        let { file, targetFolder } = ctx.request.body;
         await fileController.moveFile(file, targetFolder);
         ctx.body = {
             code: 200,
