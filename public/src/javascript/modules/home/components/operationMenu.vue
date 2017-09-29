@@ -20,17 +20,24 @@ export default {
     data() {
         return {
             fileName: this.file.name
-        }
+        };
     },
     created() {
-        var self = this;
+        let self = this;
         document.addEventListener('click', self.eventlistener);
     },
     methods: {
         eventlistener() {
-            var self = this;
-            if(this.fileName != this.file.name) {
-                console.log(3333)
+            let self = this;
+            if (`${this.fileName}` !== `${this.file.name}`) {
+                this.$store.dispatch('files/rename', { file: this.file, newName: this.fileName }).then((res) => {
+                    if (res) {
+                        this.$message({
+                            type: 'success',
+                            message: '修改名称成功!'
+                        });
+                    }
+                });
             }
             document.removeEventListener('click', self.eventlistener);
         },

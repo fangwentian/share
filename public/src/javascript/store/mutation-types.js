@@ -10,4 +10,5 @@ export const DELETE_FILE = 'DELETE_FILE';
 export const SET_BREAD_CRUMB = 'SET_BREAD_CRUMB';
 export const SEARCH_FILE_LIST = 'SEARCH_FILE_LIST';
 export const GET_FILE_HIERARCHY = 'GET_FILE_HIERARCHY';
+export const RENAME = 'RENAME';
 

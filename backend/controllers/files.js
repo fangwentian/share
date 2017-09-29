@@ -48,6 +48,9 @@ const fileController = {
     },
     async moveFile(file, targetFolder) {
         return FileModel.update({ _id: file._id }, { $set: { parent: targetFolder._id } });
+    },
+    async renameFile(fileId, newName) {
+        return FileModel.update({ _id: fileId }, { $set: { name: newName } });
     }
 };
 

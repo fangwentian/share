@@ -60,6 +60,15 @@ const mutations = {
         let { list, categoryId } = payload;
         let res = handlers.getFileHierarchy(list, categoryId);
         state.fileHierarchy = res;
+    },
+    [types.RENAME](state, payload) {
+        let { fileId, newName } = payload;
+        state.files = state.files.map((file) => {
+            if (file._id === fileId) {
+                file.name = newName;
+            }
+            return file;
+        });
     }
 };
 
@@ -127,6 +136,19 @@ const actions = {
                 
             }
         });
+    },
+    async rename({ commit, state }, payload) {
+        let { file, newName } = payload;
+        let res = await axios.post('/rename', {
+            fileId: file._id,
+            newName
+        });
+
+        if (res.data.code === 200) {
+            commit(types.RENAME, { fileId: file._id, newName });
+            return true;
+        }
+        return false;
     }
 };
 
